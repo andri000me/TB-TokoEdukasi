@@ -8,9 +8,17 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('index');
 	}
-	public function data()
+	public function user()
 	{
-		$this->load->view('tabel');
+		$this->load->view('profil');
+	}
+	public function produk()
+	{
+		$this->load->view('produk');
+	}
+	public function transaksi()
+	{
+		$this->load->view('transaksi');
 	}
 	public function error()
 	{

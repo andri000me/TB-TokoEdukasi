@@ -3,12 +3,13 @@
 
 <head>   
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/favicon.png">
-    <title>Dashboard admin - tabel</title>
+    <title>Dashboard admin - Produk</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/default.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/sidebar-nav.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="fix-header">
@@ -25,13 +26,13 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                  <a class="logo" href="index.html">
+                    <a class="logo" href="#">
                         <img src="<?php echo base_url() ?>assets/images/admin-logo.png" alt="home" class="dark-logo">
-                        <img src="<?php echo base_url() ?>assets/images/admin-logo-dark.png" alt="home" class="light-logo"/>
                      </b>
                         <span class="hidden-xs">
                             Toko Edukasi
-                        </span> </a>
+                        </span> 
+                    </a>
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
@@ -49,13 +50,16 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                        <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/data/"); ?>' class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Basic Table</a>
+                        <a href='<?php echo base_url("index.php/admin/user/"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/error/"); ?>' class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Error 404</a>
+                        <a href='<?php echo base_url("index.php/admin/produk/"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
+                    </li>
+                    <li>
+                        <a href='<?php echo base_url("index.php/admin/transaksi/"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
 
                 </ul>
@@ -71,12 +75,12 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Basic Table</h4> </div>
+                        <h4 class="page-title">Tabel Produk</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         </a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Basic Table</li>
+                            <li class="active">Tabel Produk</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -85,7 +89,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Basic Table</h3>
+                            <h3 class="box-title">Tabel Produk</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>

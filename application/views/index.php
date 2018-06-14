@@ -9,6 +9,7 @@
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/default.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/sidebar-nav.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="fix-header">
@@ -25,9 +26,8 @@
             <div class="navbar-header">
                 <div class="top-left-part">
                     <!-- Logo -->
-                    <a class="logo" href="index.html">
+                    <a class="logo" href="#">
                         <img src="<?php echo base_url() ?>assets/images/admin-logo.png" alt="home" class="dark-logo">
-                        <img src="<?php echo base_url() ?>assets/images/admin-logo-dark.png" alt="home" class="light-logo"/>
                      </b>
                         <span class="hidden-xs">
                             Toko Edukasi
@@ -49,15 +49,17 @@
                 </div>
                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                        <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/data/"); ?>' class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Basic Table</a>
+                        <a href='<?php echo base_url("index.php/admin/user/"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/error/"); ?>' class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Error 404</a>
+                        <a href='<?php echo base_url("index.php/admin/produk/"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
-
+                    <li>
+                        <a href='<?php echo base_url("index.php/admin/transaksi/"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
+                    </li>
                 </ul>
             </div>            
         </div>
