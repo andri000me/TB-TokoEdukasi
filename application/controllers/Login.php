@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('LoginView');
 		}else{
-			redirect('Login1/home','refresh');
+			redirect('Admin/user','refresh');
 		}
 	}
 	public function cekDb($password)
