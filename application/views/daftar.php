@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  			<div class="jumbotron">
 
  		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
- 		<?php echo form_open('Login1/cekDaftar') ?>
+ 		<?php echo form_open('daftar/cekDaftar') ?>
  		
  		<legend>Silahkan Registrasi</legend>
  		<?php echo validation_errors(); ?>

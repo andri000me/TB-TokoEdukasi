@@ -8,13 +8,13 @@ class Login extends CI_Controller {
 	}
 	public function cekLogin()
 	{
-		$this->load->Library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_cekDb');
+
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('LoginView');
 		}else{
-			redirect('Admin/user','refresh');
+			redirect('admin/','refresh');
 		}
 	}
 	public function cekDb($password)
@@ -23,16 +23,19 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$result = $this->user->login($username,$password);
 		if($result){
-			$sess_aaray = array();
+			$sess_array = array();
 			foreach ($result as $row) {
-				$sess_array = array('id_user'=>$row->id_user,'username'=> $row->username);
+				$sess_array = array(
+					'id_user'=> $row->id_user,
+					'username'=> $row->username
+				);
 				$this->session->set_userdata('logged_in',$sess_array);
 			}
 			return true;
 		}else{
 			$this->form_validation->set_message('cekDb',"Login Gagal Username dan Password tidak valid");
 			return false;
-			}
+		}
 	}
 	public function Logout()
 	{

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit ('No direct script access allowed');
-class Login1 extends CI_Controller {
+class Daftar extends CI_Controller {
 
 	public function home()
 	{
@@ -13,16 +13,14 @@ class Login1 extends CI_Controller {
 			redirect('login','refresh');
 		}	
 	}
-	public function daftar()
+	public function index()
 	{
 		$this->load->view('Daftar');
 	}
 	public function cekDaftar()
 	{
 		$this->load->model('create');
-
 		$this->load->Library('form_validation');
-
 		$this->form_validation->set_rules('nama_lengkap', 'nama_lengkap', 'trim|required');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -43,11 +41,11 @@ class Login1 extends CI_Controller {
 		$password = $this->input->post('password');
 		if ($konfirmasi != $password)
 		{
-			$this->form_validation->set_message('cekPassword',"Password Invalid");
+			$this->form_validation->set_message('cekPassword',"Password Tidak Sama");
 			return false;
 			
 		}else{
 			return true;
 		}
-	}
+	}	
 }

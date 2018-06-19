@@ -7,7 +7,7 @@ class List_User extends CI_Model {
 
 		$object = array('username' => $this->input->post('username'), 
 						'password' => md5($this->input->post('password')),
-						'level' => $this->input->post('level'),
+						'level' => 'user',
 						'nama_lengkap' => $this->input->post('nama_lengkap'),
 						'email' => $this->input->post('email'),
 						'alamat' => $this->input->post('alamat'),
