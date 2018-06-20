@@ -12,7 +12,7 @@ class ListUser extends CI_Controller {
 		$this->load->model('list_user');
 		$this->form_validation->set_rules('username', 'username', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
-		$this->form_validation->set_rules('level', 'Level', 'trim|required');
+		$this->form_validation->set_rules('level', 'level', 'trim|required');
 		$this->form_validation->set_rules('nama_lengkap', 'nama_lengkap', 'trim|required');
 		$this->form_validation->set_rules('email', 'email', 'trim|required');
 		$this->form_validation->set_rules('no_telp', 'no_telp', 'trim|required');
