@@ -3,7 +3,7 @@
 
 <head>   
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/favicon.png">
-    <title>Dashboard admin - Produk</title>
+    <title>Dashboard admin - User</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
@@ -59,6 +59,9 @@
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
                     <li>
+                        <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
+                    </li>   
+                    <li>
                         <a href='<?php echo base_url("index.php/admin/transaksi/"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
 
@@ -98,12 +101,8 @@
  		<div class="form-group">
  			<label for="">Username</label>
  			<input type="text" class="form-control id="username" name="username" placeholder="Username"><br>
-
  			<label for="">Password</label>
  			<input type="password" class="form-control id="password" name="password" placeholder="Password"><br>
-
- 			<label for="">Level</label>
- 			<input type="text" class="form-control id="level" name="level" placeholder="Level"></br>
 
  			<label for="">Nama Lengkap</label>
  			<input type="text" class="form-control id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap"></br>
@@ -123,6 +122,7 @@
  		 <a href="<?php echo base_url('index.php/listUser')?>"class="btn btn-danger">Back</a></td>
 </center>
 </table>
+</div>
 </div>
         <?php echo form_close(); ?>
                 <!-- /.row -->

@@ -59,7 +59,7 @@
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
                     <li>
-                    <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"> </i>Data User</a>
+                    <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
                     </li>
                     <li>
                         <a href='<?php echo base_url("index.php/admin/transaksi/"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
@@ -102,15 +102,12 @@
          <thead>
             
                <td>No</td>
-               <td>Id User</td>
                <td>Username</td>
-               <td>Password</td>
-               <td>Level</td>
                <td>Nama Lengkap</td>
                <td>Email</td>
                <td>Alamat</td>
                <td>No Telp</td>
-               <td>Options</td>
+               <td colspan="2">Options</td>
 
             </tr>   
          </thead>
@@ -118,22 +115,17 @@
          <tbody>
             <tr>
                 <?php $no=1; ?>
-                        <?php foreach ($login as $key) {
-                ?>
-          
-                  <td><?php echo $no ?></td>
-                  <td><?php echo $key['id_user'] ?></td>
-                  <td><?php echo $key['username'] ?></td>
-                  <td><?php echo $key['password'] ?></td>
-                  <td><?php echo $key['level'] ?></td>
-                  <td><?php echo $key['nama_lengkap'] ?></td>
-                  <td><?php echo $key['email'] ?></td>
-                  <td><?php echo $key['alamat'] ?></td>
-                  <td><?php echo $key['no_telp'] ?></td>
-
-<td><a href="<?php echo base_url('index.php/listUser/update/'.$key['id_user'])?>"                class="btn btn-info">Edit</a></td></center>
-
-          <td><a href="<?php echo base_url('index.php/listUser/delete/'.$key['id_user'])?>"                class="btn btn-danger">Delete</a></td></center>
+                <?php foreach ($login as $key) {
+                    if ($key['level'] == 'user') {
+                    ?>
+                    <td><?php echo $no ?></td>
+                    <td><?php echo $key['username'] ?></td>
+                    <td><?php echo $key['nama_lengkap'] ?></td>
+                    <td><?php echo $key['email'] ?></td>
+                    <td><?php echo $key['alamat'] ?></td>
+                    <td><?php echo $key['no_telp'] ?></td>
+                    <td><a href="<?php echo base_url('index.php/listUser/update/'.$key['id_user'])?>"                class="btn btn-info">Edit</a></td></center>
+                    <td><a href="<?php echo base_url('index.php/listUser/delete/'.$key['id_user'])?>"                class="btn btn-danger">Delete</a></td></center>
                  
 
                   
@@ -141,7 +133,10 @@
         </div>
                 </tbody>
                 <?php $no++ ?>
-                    <?php  } ?>
+                    <?php 
+                        } 
+                    }
+                ?>
             </table>
 
                                         </tr>

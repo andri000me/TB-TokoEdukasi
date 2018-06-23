@@ -22,13 +22,8 @@ class List_User extends CI_Model {
 		return $query->result();
 	}
 	public function updateById($id)
-	{
-		
-
-		
+	{	
 		$object = array('username' => $this->input->post('username'), 
-						'password' => md5($this->input->post('password')),
-						'level' => $this->input->post('level'),
 						'nama_lengkap' => $this->input->post('nama_lengkap'),
 						'email' => $this->input->post('email'),
 						'alamat' => $this->input->post('alamat'),

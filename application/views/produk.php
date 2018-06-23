@@ -59,7 +59,7 @@
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
                     <li>
-                    <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"> </i>Data User</a>
+                        <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
                     </li>
                     <li>
                         <a href='<?php echo base_url("index.php/admin/transaksi/"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>

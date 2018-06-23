@@ -15,12 +15,13 @@ class Create extends CI_Model {
 	{
 		
 		$object = array(
+						'username' => $this->input->post('username'),
+						'password' => md5($this->input->post('password')),
+						'level' => 'user',						
+						'nama_lengkap' => $this->input->post('nama_lengkap'),
 						'email' => $this->input->post('email'),
 						'alamat' => $this->input->post('alamat'),
-						'no_telp' => $this->input->post('no_telp'),
-						'nama_lengkap' => $this->input->post('nama_lengkap'),
-						'username' => $this->input->post('username'),
-						'password' => md5($this->input->post('password'))
+						'no_telp' => $this->input->post('no_telp')
 					);
 		$this->db->insert('login', $object);
 	}

@@ -9,8 +9,6 @@ class ListProduk extends CI_Controller {
 	}
 	public function create()// sudah di isi di autoloard 
 	{
-		$this->load->helper('url','form');
-		$this->load->library('form_validation');
 		$this->load->model('list_produk');
 		$this->form_validation->set_rules('id_produk', 'id_produk', 'trim|required');
 		$this->form_validation->set_rules('nama_produk', 'nama_produk', 'trim|required');
@@ -47,7 +45,7 @@ class ListProduk extends CI_Controller {
 	public function update($id)
 	{
 	
-			$this->load->model('list_produk');
+		$this->load->model('list_produk');
 		$this->form_validation->set_rules('id_produk', 'id_produk', 'trim|required');
 		$this->form_validation->set_rules('nama_produk', 'nama_produk', 'trim|required');
 		$this->form_validation->set_rules('harga', 'harga', 'trim|required');
