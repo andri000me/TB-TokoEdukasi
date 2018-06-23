@@ -6,7 +6,11 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('index');
+		$this->load->model('Dashboardmod');
+		$data['jumlahuser'] = $this->Dashboardmod->getDataUser();
+		$data['jumlahproduk'] = $this->Dashboardmod->getDataProduk();
+		$data['jumlahtransaksi'] = $this->Dashboardmod->getDataTransaksi();
+		$this->load->view('index', $data);
 	}
 	public function user()
 	{
