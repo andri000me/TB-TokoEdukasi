@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head>   
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/favicon.png">
-    <title>Dashboard admin - Profil</title>
+    <title>Dashboard admin - Transaksi</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
@@ -18,6 +18,9 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
         </svg>
     </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
@@ -54,99 +57,78 @@
                     </li>
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
-                   </li>
+                    </li>
                     <li>
-                    <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
+                        <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
                     </li>
                     <li>
                         <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
+
                 </ul>
-            </div>
+            </div>            
         </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Halaman Profil</h4> </div>
+                        <h4 class="page-title">Tabel Transaksi</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        </a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Profil</li>
+                            <li class="active">Tabel Transaksi</li>
                         </ol>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
-                <!-- .row -->
+                <!-- /row -->
                 <div class="row">
-                    <div class="col-md-4 col-xs-12">
+                    <div class="col-sm-12">
                         <div class="white-box">
-                            <div class="user-bg"> 
-                                <!-- <img width="100%" alt="user" src=""> -->
-                                <div class="overlay-box">
-                                    <div class="user-content">
-                                        <a href="javascript:void(0)">
-                                            <!-- <img src="" class="thumb-lg img-circle" alt="img"> -->
-                                        </a>
-                                        <h4 class="text-white">Foto Profil</h4>
-                                        <h5 class="text-white">admin@tokoedukasi.com</h5> </div>
+                            <h3 class="box-title">Tabel Transaksi</h3><br>
+                            <div class="table-responsive">
+                                <table class="table">
+                    
+                                <?php echo form_open_multipart('listTransaksi/create'); ?> 
+        
+                                <?php echo validation_errors(); ?>
+
+                                <div class="form-group">
+
+                                    <label for="">ID User</label>
+                                    <input type="text" class="form-control id="id_user" name="id_user" placeholder="ID User"><br>
+
+                                    <label for="">ID Produk</label>
+                                    <input type="text" class="form-control id="id_produk" name="id_produk" placeholder="ID produk"><br>
+
+                                    <label for="">Jumlah</label>
+                                    <input type="text" class="form-control id="jumlah" name="jumlah" placeholder="jumlah"></br>
+
+                                    <label for="">Tanggal</label>
+                                    <input type="date" class="form-control id="tanggal" name="tanggal" placeholder="tanggal"></br>
+
                                 </div>
+                                <center>
+                                        <button type="submit" class="btn btn-info">Submit</button>
+                                        <a href="<?php echo base_url('index.php/listTransaksi')?>"class="btn btn-danger">Back</a></td>
+                                </center>
+                                </table>
                             </div>
-                            <div class="user-btm-box">
-                                <div class="col-md-12 col-sm-12 text-center">
-                                    <p class="text-purple"><i class="ti-facebook"></i></p>
-                                    <h1>ID</h1> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-xs-12">
-                        <div class="white-box">
-                            <form class="form-horizontal form-material">
-                                <div class="form-group">
-                                    <label class="col-md-12">Nama Lengkap</label>
-                                    <div class="col-md-12">
-                                        <input type="text" placeholder="Admin" class="form-control form-control-line"> </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-email" class="col-md-12">Email</label>
-                                    <div class="col-md-12">
-                                        <input type="email" placeholder="admin@tokoedukasi.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label class="col-md-12">Password</label>
-                                    <div class="col-md-12">
-                                        <input type="password" value="password" class="form-control form-control-line"> </div>
-                                </div> -->
-                                <div class="form-group">
-                                    <label class="col-md-12">Alamat</label>
-                                    <div class="col-md-12">
-                                        <textarea rows="5" class="form-control form-control-line">
-                                            Ini alamat
-                                        </textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-12">No HP</label>
-                                    <div class="col-md-12">
-                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <button class="btn btn-success">Update Profile</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                            <?php echo form_close(); ?>
                 <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; Admin Toko Edukasi Online </footer>
-        </div>
-    </div>
-    <!-- jQuery -->
+                        </div>
+                        <footer class="footer text-center"> 2018 &copy; Admin Toko Edukasi Online </footer>
+                    </div>
+        <!-- /#page-wrapper -->
+                </div>
+   
     <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>

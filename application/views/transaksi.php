@@ -61,7 +61,7 @@
                     <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/transaksi/"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
+                        <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
 
                 </ul>
@@ -94,58 +94,33 @@
                             <h3 class="box-title">Tabel Transaksi</h3>
                             <div class="table-responsive">
                                 <table class="table">
+                                    <center>
+                                        <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success">Tambah</a>  
+                                    </center>
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                            <th>Role</th>
+                                           <th>No</td>
+                                           <th>ID User</th>
+                                           <th>ID Produk</th>
+                                           <th>Jumlah</th>
+                                           <th>Tanggal</th>
+                                           <th>Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
+                                            <?php $no=1; ?>
+                                            <?php foreach ($transaksi as $key) {
+                                            ?>                                    
+                                              <td><?php echo $no ?></td>
+                                              <td><?php echo $key['id_user'] ?></td>
+                                              <td><?php echo $key['id_produk'] ?></td>
+                                              <td><?php echo $key['jumlah'] ?></td>
+                                              <td><?php echo $key['tanggal'] ?></td>
+                                              <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info">Edit</a>
+                                              <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>developer</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Roshan</td>
-                                            <td>Rogahn</td>
-                                            <td>@Hritik</td>
-                                            <td>supporter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Joshi</td>
-                                            <td>Hickle</td>
-                                            <td>@Maruti</td>
-                                            <td>member</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Nigam</td>
-                                            <td>Eichmann</td>
-                                            <td>@Sonu</td>
-                                            <td>supporter</td>
-                                        </tr>
+                                    <?php $no++; } ?>
                                     </tbody>
                                 </table>
                             </div>
