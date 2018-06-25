@@ -116,8 +116,11 @@
             <label for="">Deskripsi</label>
             <input type="text" class="form-control id="deskripsi" name="deskripsi" placeholder="Deskripsi"></br>
 
+             </div>
+    <div class="form-group">
             <label for="">Gambar</label>
-            <input type="file" class="form-group  name="userfile" size="20"></br>
+            <input type="file" name="userfile" size="20"/>
+        
 
         </div></div>
 <center>
