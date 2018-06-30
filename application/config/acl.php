@@ -57,9 +57,25 @@ $acl = array(
 
 	/* WELCOME */
 
-	'welcome/index' => array(
+	'login/index' => array(
 		'public'
 	),
+	'admin' => array(
+		'user' => true,
+		'admin' => true,
+	),
+	'listTransaksi' => array(
+		'user' => false,
+		'admin' => true,
+	),
+	'listProduk' => array(
+		'user' => false,
+		'admin' => true,
+	),
+	'listUser' => array(
+		'user' => false,
+		'admin' => true,
+	)
 
 );
 

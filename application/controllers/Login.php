@@ -1,7 +1,28 @@
 <?php
 defined('BASEPATH') OR exit ('No direct script access allowed');
 class Login extends CI_Controller {
-	
+
+	public function __construct()
+	{
+		parent::__construct();
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+			$data['username'] = $session_data['username'];
+			$data['level'] = $session_data['level'];
+			$current_controller = $this->router->fetch_class();
+			$this->load->library('acl');
+			if (! $this->acl->is_public($current_controller))
+			{
+				if (! $this->acl->is_allowed($current_controller, $data['level']))
+				{
+					redirect('admin','refresh');				
+				}
+			}
+		}
+			// $this->load->view('tampil_user',$data);
+	}
+
+
 	public function index()
 	{
 		$this->load->view('LoginView');
@@ -26,8 +47,9 @@ class Login extends CI_Controller {
 			$sess_array = array();
 			foreach ($result as $row) {
 				$sess_array = array(
-					'id_user'=> $row->id_user,
-					'username'=> $row->username
+					'id_user' => $row->id_user,
+					'username' => $row->username,
+					'level' => $row->level
 				);
 				$this->session->set_userdata('logged_in',$sess_array);
 			}
@@ -37,10 +59,5 @@ class Login extends CI_Controller {
 			return false;
 		}
 	}
-	public function Logout()
-	{
-		$this->session->unset_userdata('logged_in');
-		$this->session->sess_destroy();
-		redirect('login','refresh');
-		}
+	
 }

@@ -38,8 +38,13 @@
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                           <input type="text" placeholder="Search..." class="form-control"> 
+                            <a href="">
+                                <i class="fa fa-search"></i>
+                            </a> 
+                        </form>
                     </li>
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
         </nav>

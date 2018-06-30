@@ -35,8 +35,13 @@
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                           <input type="text" placeholder="Search..." class="form-control"> 
+                            <a href="">
+                                <i class="fa fa-search"></i>
+                            </a> 
+                        </form>
                     </li>
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
         </nav>
@@ -50,7 +55,7 @@
                         <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/user/"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
+                        <a href='<?php echo base_url("index.php/ListProfil"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
                     </li>
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
@@ -73,6 +78,7 @@
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
                             <li class="active">Profil</li>
+
                         </ol>
                     </div>
                 </div>
@@ -103,39 +109,44 @@
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
                             <form class="form-horizontal form-material">
+                                <?php foreach ($login as $data ) { ?>
+                                   
                                 <div class="form-group">
                                     <label class="col-md-12">Nama Lengkap</label>
-                                    <div class="col-md-12">
-                                        <input type="text" placeholder="Admin" class="form-control form-control-line"> </div>
+                                    <div class="col-md-12"> 
+                                        <h3><?php echo $data['nama_lengkap']; ?></h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Username</label>
+                                    <div class="col-md-12"> 
+                                        <h3><?php echo $data['username']; ?></h3>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-email" class="col-md-12">Email</label>
                                     <div class="col-md-12">
-                                        <input type="email" placeholder="admin@tokoedukasi.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label class="col-md-12">Password</label>
-                                    <div class="col-md-12">
-                                        <input type="password" value="password" class="form-control form-control-line"> </div>
-                                </div> -->
-                                <div class="form-group">
-                                    <label class="col-md-12">Alamat</label>
-                                    <div class="col-md-12">
-                                        <textarea rows="5" class="form-control form-control-line">
-                                            Ini alamat
-                                        </textarea>
+                                        <h3><?php echo $data['email']; ?></h3>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-12">No HP</label>
-                                    <div class="col-md-12">
-                                        <input type="text" placeholder="123 456 7890" class="form-control form-control-line"> </div>
+                                    <label class="col-md-12">Alamat</label>
+                                    <div class="col-md-12"> 
+                                        <h3><?php echo $data['alamat']; ?></h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">No Telepon</label>
+                                    <div class="col-md-12"> 
+                                        <h3><?php echo $data['no_telp']; ?></h3>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <button class="btn btn-success">Update Profile</button>
                                     </div>
                                 </div>
+                                <?php } ?>
                             </form>
                         </div>
                     </div>

@@ -37,8 +37,13 @@
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                            <input type="text" placeholder="Search..." class="form-control"> 
+                            <a href="">
+                                <i class="fa fa-search"></i>
+                            </a> 
+                        </form>
                     </li>
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
         </nav>
@@ -52,7 +57,7 @@
                         <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/user/"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
+                        <a href='<?php echo base_url("index.php/listProfil"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
                    </li>
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
