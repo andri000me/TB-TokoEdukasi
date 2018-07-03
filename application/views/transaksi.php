@@ -9,6 +9,7 @@
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/default.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/sidebar-nav.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -35,14 +36,6 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                        <input type="text" placeholder="Search..." class="form-control"> 
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                            </a> 
-                        </form>
-                    </li>
                     <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>   
                 </ul>
             </div>
@@ -82,12 +75,12 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Tabel Transaksi</h4> </div>
+                        <h4 class="page-title">Data Transaksi</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         </a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Tabel Transaksi</li>
+                            <li class="active">Data Transaksi</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -96,12 +89,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Tabel Transaksi</h3>
                             <div class="table-responsive">
-                                <table class="table">
-                                    <center>
-                                        <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success">Tambah</a>  
-                                    </center>
+                                <table class="table" id="example">
+                                    <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success">Tambah Transaksi</a><br><br>
                                     <thead>
                                         <tr>
                                            <th>No</td>
@@ -151,6 +141,17 @@
     <script src="<?php echo base_url() ?>assets/js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/custom.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/datatables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/datatables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#example').DataTable();
+        } );
+    </script>
+
 </body>
 
 </html>

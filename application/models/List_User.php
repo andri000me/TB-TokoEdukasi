@@ -14,6 +14,8 @@ class List_User extends CI_Model {
 						'no_telp' => $this->input->post('no_telp'));
 		
 		$this->db->insert('login', $object);
+
+		
 	}
 	public function getUser($id)
 	{

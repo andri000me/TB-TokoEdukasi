@@ -9,6 +9,7 @@
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/default.css" id="theme" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/sidebar-nav.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -36,14 +37,6 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> 
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                            </a> 
-                        </form>
-                    </li>
                     <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
@@ -83,12 +76,12 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Tabel Produk</h4> </div>
+                        <h4 class="page-title">Data Produk</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         </a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Tabel Produk</li>
+                            <li class="active">Data Produk</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -97,61 +90,41 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Tabel Produk</h3>
                             <div class="table-responsive">
-                                <table class="table">
-                        <center>
-                            <a href="<?php echo base_url('index.php/listProduk/create/')?>"                class="btn btn-success">Tambah</a>  </center>
+                                <table class="table" id="example">
+                                    <a href="<?php echo base_url('index.php/listProduk/create/')?>" class="btn btn-success">Tambah Produk</a><br><br> 
                                     <thead>
                                         <tr>
-                                                   <th>No</td>
-                                                   <th>Id Produk</th>
-                                                   <th>Nama Produk</th>
-                                                   <th>Harga</th>
-                                                   <th>Stok</th>
-                                                   <th>Deskripsi</th>
-                                                   <th>Gambar</th>
-                                                   <th>Options</th>
-                                                                            </tr>
+                                            <th>No</td>
+                                            <th>Nama Produk</th>
+                                            <th>Harga</th>
+                                            <th>Stok</th>
+                                            <th>Deskripsi</th>
+                                            <th>Gambar</th>
+                                            <th>Options</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                             <tbody>
-            <tr>
-                <?php $no=1; ?>
-                        <?php foreach ($produk as $key) {
-                ?>
-            
-                  <td><?php echo $no ?></td>
-                  <td><?php echo $key['id_produk'] ?></td>
-                  <td><?php echo $key['nama_produk'] ?></td>
-                  <td><?php echo $key['harga'] ?></td>
-                  <td><?php echo $key['stok'] ?></td>
-                  <td><?php echo $key['deskripsi'] ?></td>
-                  <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200></td>
-<td><a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>"                class="btn btn-info">Edit</a></td></center>
-
-          <td><a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>"                class="btn btn-danger">Delete</a></td></center>
-<!--  --> 
-       
-
-                  
-                 
-
-                  
-                 
-                               </tr>  </div>
-        </div>
-                </tbody>
-                <?php $no++ ?>
-                    <?php  } ?>
-            </table>
-
-                                        </tr>
+                                            <?php $no=1; ?>
+                                               <?php foreach ($produk as $key) {
+                                            ?>
+                                        
+                                          <td><?php echo $no ?></td>
+                                          <td><?php echo $key['nama_produk'] ?></td>
+                                          <td><?php echo $key['harga'] ?></td>
+                                          <td><?php echo $key['stok'] ?></td>
+                                          <td><?php echo $key['deskripsi'] ?></td>
+                                          <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200></td>
+                                          <td><a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>"                class="btn btn-info">Edit</a>
+                                          <a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>"                class="btn btn-danger">Delete</a></center>
+                                      </tr> 
                                     </tbody>
+                                <?php $no++ ?>
+                                    <?php  } ?>
                                 </table>
                             </div>
-                        </div>
+                        </div>    
                     </div>
                 </div>
                 <!-- /.row -->
@@ -173,6 +146,16 @@
     <script src="<?php echo base_url() ?>assets/js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/custom.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/datatables.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/datatables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#example').DataTable();
+        } );
+    </script>
 </body>
 
 </html>

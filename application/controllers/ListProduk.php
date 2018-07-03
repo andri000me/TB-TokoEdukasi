@@ -33,7 +33,6 @@ class ListProduk extends CI_Controller {
 	public function create()// sudah di isi di autoloard 
 	{
 		$this->load->model('list_produk');
-		$this->form_validation->set_rules('id_produk', 'id_produk', 'trim|required');
 		$this->form_validation->set_rules('nama_produk', 'nama_produk', 'trim|required');
 		$this->form_validation->set_rules('harga', 'harga', 'trim|required');
 		$this->form_validation->set_rules('stok', 'stok', 'trim|required');
@@ -60,22 +59,20 @@ class ListProduk extends CI_Controller {
 			else
 			{
 				$this->list_produk->insertProduk();
-				$this->load->view('sukses_input_produk');
+				echo "<script> alert('Data Produk Berhasil Ditambahkan'); window.location.href='';
+			</script>";
 			}
 			
 		}
 	}
 	public function update($id)
 	{
-	
 		$this->load->model('list_produk');
-		$this->form_validation->set_rules('id_produk', 'id_produk', 'trim|required');
 		$this->form_validation->set_rules('nama_produk', 'nama_produk', 'trim|required');
 		$this->form_validation->set_rules('harga', 'harga', 'trim|required');
 		$this->form_validation->set_rules('stok', 'stok', 'trim|required');
 		$this->form_validation->set_rules('deskripsi', 'deskripsi', 'trim|required');
 		// $this->form_validation->set_rules('gambar', 'gambar', 'trim|required');
-		
 
 		$this->load->model('list_produk');
 		$data['produk'] = $this->list_produk->getProduk($id);
@@ -84,7 +81,8 @@ class ListProduk extends CI_Controller {
 			$this->load->view('edit_data_produk',$data);
 		}else{
 			$this->list_produk->updateById($id);
-			$this->load->view('sukses_edit_produk');
+			echo "<script> alert('Data Produk Berhasil Diupdate'); window.location.href='';
+			</script>";
 		}
 	}
 	
@@ -92,6 +90,8 @@ class ListProduk extends CI_Controller {
 	{
 		$this->load->model('list_produk');
 		$this->list_produk->delete($id);
-		redirect('listProduk');
+		redirect('listProduk','refresh');
+		
+
 	}
 }

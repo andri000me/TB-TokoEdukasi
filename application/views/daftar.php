@@ -45,17 +45,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 		
 		<div class="row">
-			<h2>Form Registrasi</h2>
+			
 			<div class="login">
  		<?php echo form_open('daftar/cekDaftar') ?>
  		
- 		<legend>Silahkan Registrasi</legend>
+ 		<legend><h2>Form Registrasi</h2></legend>
  		<?php echo validation_errors(); ?>
  		<div class="form-group">
 
  			<form role="form" action="" method="post">
 					<div class="form-group">
-						<input type="text"  id="nama_lengkap" name="nama_lengkap" class="form-control" placeholder="Username" required autofocus />
+						<input type="text"  id="nama_lengkap" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap" required autofocus />
 					</div>
 					<div class="form-group">
 						<input type="text"  id="username" name="username"  class="form-control" id="username" placeholder="Username" required autofocus />

@@ -36,10 +36,7 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
         </nav>
@@ -101,9 +98,6 @@
         <?php echo validation_errors(); ?>
 
         <div class="form-group">
-            <label for="">Id Produk</label>
-            <input type="text" class="form-control id="id_produk" name="id_produk" placeholder="Id Produk"><br>
-
             <label for="">Nama Produk</label>
             <input type="text" class="form-control id="nama_produk" name="nama_produk" placeholder="Nama Produk"><br>
 
@@ -114,19 +108,15 @@
             <input type="text" class="form-control id="stok" name="stok" placeholder="Stok"></br>
 
             <label for="">Deskripsi</label>
-            <input type="text" class="form-control id="deskripsi" name="deskripsi" placeholder="Deskripsi"></br>
+            <textarea class="form-control id="deskripsi" name="deskripsi" placeholder="Deskripsi"></textarea></br>
 
-             </div>
-    <div class="form-group">
             <label for="">Gambar</label>
             <input type="file" name="userfile" size="20"/>
-        
-
-        </div></div>
-<center>
-        <button type="submit" class="btn btn-info">Submit</button>
-        <a href="<?php echo base_url('index.php/listProduk')?>"class="btn btn-danger">Back</a></td>
-</center>
+        </div>
+        <center>
+            <button type="submit" class="btn btn-info">Submit</button>
+            <a href="<?php echo base_url('index.php/listProduk')?>"class="btn btn-danger">Back</a></td>
+        </center>
 </table>
 </div>
         <?php echo form_close(); ?>

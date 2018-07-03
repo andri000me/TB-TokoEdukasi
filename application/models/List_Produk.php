@@ -3,7 +3,6 @@
 class List_Produk extends CI_Model {
 	public function insertProduk()
 	{
-		
 
 		$object = array('id_produk' => $this->input->post('id_produk'), 
 						'nama_produk' => $this->input->post('nama_produk'),
@@ -11,8 +10,6 @@ class List_Produk extends CI_Model {
 						'stok' => $this->input->post('stok'),
 						'deskripsi' => $this->input->post('deskripsi'),
 						'gambar' => $this->upload->data('file_name'));
-						
-
 		
 		$this->db->insert('produk', $object);
 	}
@@ -23,17 +20,14 @@ class List_Produk extends CI_Model {
 		return $query->result();
 	}
 	public function updateById($id)
-	{
-		
-
-		
-		$object = array('id_produk' => $this->input->post('id_produk'), 
+	{	
+		$object = array( 
 						'nama_produk' => $this->input->post('nama_produk'),
 						'harga' => $this->input->post('harga'),
 						'stok' => $this->input->post('stok'),
 						'deskripsi' => $this->input->post('deskripsi'),
-						'gambar' => $this->input->post('gambar'));
-
+						'gambar' => $this->input->post('gambar')
+					);
 		$this->db->where('id_produk', $id);
 		$this->db->update('produk', $object);
 	}

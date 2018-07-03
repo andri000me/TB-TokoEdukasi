@@ -36,14 +36,6 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> 
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                            </a> 
-                        </form>
-                    </li>
                     <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
@@ -102,32 +94,34 @@
                                 <table class="table">
                         <?php echo form_open('listProduk/update/'.$this->uri->segment(3)); ?> 
         
-        <?php echo validation_errors(); ?>
-    
+                        <?php echo validation_errors(); ?>
+                    
 
-        <div class="form-group">
-            <label for="">Id Produk</label>
-            <input type="text" class="form-control" id="id_produk" placeholder="Id Produk" name="id_produk" value="<?php echo $produk[0]->id_produk ?>">
-            <label for="">Nama Produk</label>
-            <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?php echo $produk[0]->nama_produk ?>">
-            <label for="">Harga</label>
-            <input type="text" class="form-control" id="harga" name="harga" placeholder="Harga" value="<?php echo $produk[0]->harga ?>">
-            <label for="">Stok</label>
-            <input type="text" class="form-control" id="stok" name="stok" placeholder="Stok" value="<?php echo $produk[0]->stok ?>">
-            <label for="">Deskripsi</label>
-            <input type="deskripsi" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi" value="<?php echo $produk[0]->deskripsi ?>">
-            <label for="">Gambar</label>
-            <input type="text" class="form-control" id="gambar" name="gambar" placeholder="Gambar" value="<?php echo $produk[0]->gambar ?>">
-            
+                        <div class="form-group">
+                            <label for="">Nama Produk</label>
+                            <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?php echo $produk[0]->nama_produk ?>">
+                            <label for="">Harga</label>
+                            <input type="text" class="form-control" id="harga" name="harga" placeholder="Harga" value="<?php echo $produk[0]->harga ?>">
+                            <label for="">Stok</label>
+                            <input type="text" class="form-control" id="stok" name="stok" placeholder="Stok" value="<?php echo $produk[0]->stok ?>">
+                            <label for="">Deskripsi</label>
+                            <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi"><?php echo $produk[0]->deskripsi ?></textarea>
+                            <label for="">Gambar</label>
+                            <input type="text" class="form-control" id="gambar" name="gambar" placeholder="Gambar" value="<?php echo $produk[0]->gambar ?>">
+                        </div>
 
-
-</div>
-
-        <div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    <?php echo form_close();?>
-    </div>
+                        <div>
+                            <center>
+                            <button type="submit" class="btn btn-info">Submit</button>
+                            <a href="<?php echo base_url('index.php/listProduk')?>"class="btn btn-danger">Back</a>
+                            <?php echo form_close();?>
+                        </center>
+                    </div>
+                </div>
+            </table>
         </div>
+    </div>
+</div>
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2018 &copy; Admin Toko Edukasi Online </footer>
         </div>

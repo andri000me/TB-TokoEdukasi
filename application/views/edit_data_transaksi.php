@@ -36,14 +36,6 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> 
-                            <a href="">
-                                <i class="fa fa-search"></i>
-                            </a> 
-                        </form>
-                    </li>
                     <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
@@ -102,28 +94,35 @@
                                 <table class="table">
                         <?php echo form_open('listTransaksi/update/'.$this->uri->segment(3)); ?> 
         
-        <?php echo validation_errors(); ?>
-    
+                        <?php echo validation_errors(); ?>
+                    
 
-        <div class="form-group">
-            <label for="">ID User</label>
-            <input type="text" class="form-control" id="id_user" placeholder="ID User" name="id_user" value="<?php echo $transaksi[0]->id_user ?>">
-            <br>
-            <label for="">ID Produk</label>
-            <input type="text" class="form-control" id="id_produk" name="id_produk" placeholder="ID Produk" value="<?php echo $transaksi[0]->id_produk ?>">
-            <br>
-            <label for="">Jumlah</label>
-            <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah" value="<?php echo $transaksi[0]->jumlah ?>">
-            <br>
-            <label for="">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal" value="<?php echo $transaksi[0]->tanggal ?>">
-        </div>
+                        <div class="form-group">
+                            <label for="">ID User</label>
+                            <input type="text" class="form-control" id="id_user" placeholder="ID User" name="id_user" value="<?php echo $transaksi[0]->id_user ?>">
+                            <br>
+                            <label for="">ID Produk</label>
+                            <input type="text" class="form-control" id="id_produk" name="id_produk" placeholder="ID Produk" value="<?php echo $transaksi[0]->id_produk ?>">
+                            <br>
+                            <label for="">Jumlah</label>
+                            <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah" value="<?php echo $transaksi[0]->jumlah ?>">
+                            <br>
+                            <label for="">Tanggal</label>
+                            <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal" value="<?php echo $transaksi[0]->tanggal ?>">
+                        </div>
 
-        <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <?php echo form_close();?>
+                        <div>
+                            <center>
+                                <button type="submit" class="btn btn-info">Submit</button>
+                                <a href="<?php echo base_url('index.php/listTransaksi')?>"class="btn btn-danger">Back</a>
+                            <?php echo form_close();?>
+                            </center>
+                        </div>
+                    </div>
+                </table>
+            </div>
         </div>
-        </div>
+    </div>
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2018 &copy; Admin Toko Edukasi Online </footer>
         </div>

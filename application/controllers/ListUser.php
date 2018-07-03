@@ -47,7 +47,8 @@ class ListUser extends CI_Controller {
 		}
 		else{
 			$this->list_user->insertUser();
-			$this->load->view('sukses_input_user');
+			echo "<script> alert('Data User Berhasil Ditambahkan'); window.location.href='';
+			</script>";
 		}
 	}
 	public function update($id)
@@ -67,7 +68,8 @@ class ListUser extends CI_Controller {
 			$this->load->view('edit_data_user',$data);
 		}else{
 			$this->list_user->updateById($id);
-			$this->load->view('sukses_edit_user');
+			echo "<script> alert('Data User Berhasil Diupdate'); window.location.href='';
+			</script>";
 		}
 	}
 	
@@ -75,6 +77,6 @@ class ListUser extends CI_Controller {
 	{
 		$this->load->model('list_user');
 		$this->list_user->delete($id);
-		redirect('listUser');
+		redirect('listUser','refresh');
 	}
 }

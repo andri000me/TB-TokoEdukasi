@@ -45,7 +45,8 @@ class ListTransaksi extends CI_Controller {
 			$this->load->view('input_data_transaksi');
 		}else{
 			$this->list_transaksi->insertTransaksi();
-			$this->load->view('sukses_input_transaksi');
+			echo "<script> alert('Data Transaksi Berhasil Ditambahkan'); window.location.href='';
+			</script>";
 		}
 	}
 	public function update($id)
@@ -63,7 +64,8 @@ class ListTransaksi extends CI_Controller {
 			$this->load->view('edit_data_transaksi',$data);
 		}else{
 			$this->list_transaksi->updateByIdTransaksi($id);
-			$this->load->view('sukses_edit_transaksi');
+			echo "<script> alert('Data Transaksi Berhasil Diupdate'); window.location.href='';
+			</script>";
 		}
 	}
 	

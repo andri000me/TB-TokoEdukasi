@@ -45,10 +45,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 		
 		<div class="row">
-			<h2>Silahkan Login</h2>
 			<div class="login">
 				
-				
+			<legend><h2>Form Login</h2></legend>
 						<?php echo form_open('login/cekLogin') ?>
 		 		<!-- <legend>Login </legend> -->
 		 		<?php echo validation_errors(); ?>
@@ -60,22 +59,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="form-group">
 						<input type="password" name="password" class="form-control" id="password" placeholder="Password" required autofocus />
 					</div>
-					
-							
-						</select>
-					</div>
 					<div class="form-group">
 						<input type="submit" name="login" class="btn btn-info btn-block" value="Log me in" />
-			<?php echo form_close(); ?>
-
-
-			 		
+						<?php echo form_close(); ?>
 			 		</div>
-				</div>
-				<center>
-	 				
-	 			
-					</div>
 				</form>
 			</div>
 			<?php 
