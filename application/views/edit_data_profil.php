@@ -36,7 +36,10 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
+                    <li>
+                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
+                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -55,9 +58,12 @@
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
-                    <li>
-                        <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
-                    </li>   
+                    <?php foreach ($user as $key ) {
+                       if($key['level'] == 'admin'){ ?>
+                        <li>
+                            <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
+                        </li>
+                    <?php } } ?>   
                     <li>
                         <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
@@ -75,12 +81,12 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Tabel Tambah Data User</h4> </div>
+                        <h4 class="page-title">Tabel Edit Data User</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         </a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Tambah Data User</li>
+                            <li class="active">Edit Data User</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -89,45 +95,37 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Tabel Tambah Data User</h3>
+                            <h3 class="box-title">Tabel Edit Data User</h3>
                             <div class="table-responsive">
                                 <table class="table">
- 		<?php echo form_open('listUser/create'); ?> 
- 		
- 		<?php echo validation_errors(); ?>
- 		<div class="form-group">
+        <?php echo form_open('listProfil/update'.$this->uri->segment(3)); ?> 
+        
+        <?php echo validation_errors(); ?>
+        <div class="form-group">
+            <label for="">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?php echo $login[0]->username ?>"><br>
             <label for="">Nama Lengkap</label>
-            <input type="text" class="form-control id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap"></br>
-
- 			<label for="">Username</label>
- 			<input type="text" class="form-control id="username" name="username" placeholder="Username"><br>
-
- 			<label for="">Password</label>
- 			<input type="password" class="form-control id="password" name="password" placeholder="Password"><br>
-
-            <label for="">Konfirmasi Password</label>
-            <input type="password" class="form-control id="konfirmasi" name="konfirmasi" placeholder="Konfirmasi Password"><br>
-
- 			<label for="">Email</label>
- 			<input type="email" class="form-control id="email" name="email" placeholder="Email"></br>
-
- 			<label for="">Alamat</label>
- 			<input type="text" class="form-control id="alamat" name="alamat" placeholder="Alamat"></br>
-
- 			<label for="">No Telp</label>
- 			<input type="text" class="form-control id="no_telp" name="no_telp" placeholder="No Telp"></br>
-
- 		</div>
-<center>
- 		<button type="submit" class="btn btn-info">Submit</button>
- 		 <a href="<?php echo base_url('index.php/listUser')?>"class="btn btn-danger">Back</a></td>
-</center>
+            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?php echo $login[0]->nama_lengkap ?>"><br>
+            <label for="">Email</label>
+            <input type="email" class="form-control" id="date" name="email" placeholder="Email" value="<?php echo $login[0]->email ?>"><br>
+            <label for="">Alamat</label>
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="<?php echo $login[0]->alamat ?>"><br>
+            <label for="">No Telp</label>
+            <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No Telp" value="<?php echo $login[0]->no_telp ?>">
+        </div>
+            <label for="">Gambar</label>
+            <input type="file" name="userfile" size="20"/>
+        </div>
+        <center>
+                <button type="submit" class="btn btn-info">Submit</button>
+                 <a href="<?php echo base_url('index.php/listProfil')?>"class="btn btn-danger">Back</a></td>
+        </center>
+        <?php echo form_close(); ?>
 </table>
 </div>
-</div>
-        <?php echo form_close(); ?>
+        
                 <!-- /.row -->
-            </div>
+            </div></div>
             <!-- /.container-fluid -->
             <footer class="footer text-center"> 2018 &copy; Admin Toko Edukasi Online </footer>
         </div>

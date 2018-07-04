@@ -37,6 +37,7 @@ class ListUser extends CI_Controller {
 		$this->load->model('list_user');
 		$this->form_validation->set_rules('username', 'username', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$this->form_validation->set_rules('konfirmasi', 'Konfirmasi', 'trim|required|callback_cekPassword');
 		$this->form_validation->set_rules('nama_lengkap', 'nama_lengkap', 'trim|required');
 		$this->form_validation->set_rules('email', 'email', 'trim|required');
 		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
@@ -49,6 +50,18 @@ class ListUser extends CI_Controller {
 			$this->list_user->insertUser();
 			echo "<script> alert('Data User Berhasil Ditambahkan'); window.location.href='';
 			</script>";
+		}
+	}
+	public function cekPassword($konfirmasi)
+	{
+		$password = $this->input->post('password');
+		if ($konfirmasi != $password)
+		{
+			$this->form_validation->set_message('cekPassword',"Password Tidak Sama");
+			return false;
+			
+		}else{
+			return true;
 		}
 	}
 	public function update($id)

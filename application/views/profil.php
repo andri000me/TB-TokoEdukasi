@@ -52,9 +52,14 @@
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                    </li>
-                    <li>
-                    <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
-                    </li>
+                   <?php foreach ($user as $key ) {
+                       if($key['level'] == 'admin'){ ?>
+                        <li>
+                            <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
+                        </li>
+                       
+                   <?php } } ?>
+
                     <li>
                         <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
@@ -86,8 +91,11 @@
                                         <a href="javascript:void(0)">
                                             <!-- <img src="" class="thumb-lg img-circle" alt="img"> -->
                                         </a>
+                                         <?php foreach ($login as $data ) { ?>
                                         <h4 class="text-white">Foto Profil</h4>
-                                        <h5 class="text-white">admin@tokoedukasi.com</h5> </div>
+                                        <h3><?php echo $data['foto']; ?></h3>
+                                         <?php } ?>
+                                        <h5 class="text-white"><?php echo $data['email']; ?></h5> </div>
                                 </div>
                             </div>
                             <div class="user-btm-box">
@@ -135,7 +143,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <button class="btn btn-success">Update Profile</button>
+                                       <a href="<?php echo base_url('index.php/listProfil/update')?>"class="btn btn-success">Update Profil</a></td>
                                     </div>
                                 </div>
                                 <?php } ?>
