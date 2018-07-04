@@ -55,9 +55,12 @@
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
-                    <li>
-                        <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
-                    </li>
+                    <?php foreach ($user as $key) { ?>
+                        <?php if($key['level'] == 'admin') { ?>
+                            <li>
+                                <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
+                            </li>
+                        <?php } } ?>
                     <li>
                         <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>

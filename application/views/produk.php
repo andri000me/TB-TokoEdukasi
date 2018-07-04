@@ -56,9 +56,12 @@
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
+                    <?php foreach ($user as $key) { ?>
+                    <?php if($key['level'] == 'admin') { ?>
                     <li>
                         <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
                     </li>
+                    <?php } } ?>
                     <li>
                         <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
@@ -92,7 +95,10 @@
                         <div class="white-box">
                             <div class="table-responsive">
                                 <table class="table" id="example">
+                                    <?php foreach ($user as $key) { ?>
+                                        <?php if($key['level'] == 'admin') { ?>
                                     <a href="<?php echo base_url('index.php/listProduk/create/')?>" class="btn btn-success">Tambah Produk</a><br><br> 
+                                    <?php } } ?>
                                     <thead>
                                         <tr>
                                             <th>No</td>
@@ -101,7 +107,10 @@
                                             <th>Stok</th>
                                             <th>Deskripsi</th>
                                             <th>Gambar</th>
+                                            <?php foreach ($user as $key) { ?>
+                                                <?php if($key['level'] == 'admin') { ?>
                                             <th>Options</th>
+                                            <?php } } ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,8 +125,11 @@
                                           <td><?php echo $key['stok'] ?></td>
                                           <td><?php echo $key['deskripsi'] ?></td>
                                           <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200></td>
+                                          <?php foreach ($user as $tes) { ?>
+                                                <?php if($tes['level'] == 'admin') { ?>
                                           <td><a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>"                class="btn btn-info">Edit</a>
                                           <a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>"                class="btn btn-danger">Delete</a></center>
+                                            <?php } } ?>
                                       </tr> 
                                     </tbody>
                                 <?php $no++ ?>

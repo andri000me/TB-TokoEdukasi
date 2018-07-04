@@ -65,11 +65,11 @@ $acl = array(
 		'admin' => true,
 	),
 	'listTransaksi' => array(
-		'user' => false,
+		'user' => true,
 		'admin' => true,
 	),
 	'listProduk' => array(
-		'user' => false,
+		'user' => true,
 		'admin' => true,
 	),
 	'listUser' => array(

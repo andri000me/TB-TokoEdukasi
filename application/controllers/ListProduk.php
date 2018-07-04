@@ -28,6 +28,7 @@ class ListProduk extends CI_Controller {
 	{
 		$this->load->model('list_produk');
 		$data["produk"] = $this->list_produk->getTampil();
+		$data['user'] = $this->list_produk->getUser();
 		$this->load->view('produk',$data);
 	}
 	public function create()// sudah di isi di autoloard 

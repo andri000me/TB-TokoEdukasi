@@ -55,13 +55,15 @@
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
                     </li>
-                    <li>
-                    <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
-                    </li>
+                    <?php foreach ($user as $key) { ?>
+                        <?php if($key['level'] == 'admin') { ?>
+                            <li>
+                            <a href='<?php echo base_url("index.php/listUser"); ?>' class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"> </i>Data User</a>
+                            </li>
+                    <?php } } ?>
                     <li>
                         <a href='<?php echo base_url("index.php/listTransaksi"); ?>' class="waves-effect"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Transaksi</a>
                     </li>
-
                 </ul>
             </div>            
         </div>
@@ -99,7 +101,10 @@
                                            <th>ID Produk</th>
                                            <th>Jumlah</th>
                                            <th>Tanggal</th>
-                                           <th>Options</th>
+                                           <?php foreach ($user as $key) { ?>
+                                                <?php if($key['level'] == 'admin') { ?>
+                                                <th>Options</th>
+                                            <?php } } ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -112,8 +117,11 @@
                                               <td><?php echo $key['id_produk'] ?></td>
                                               <td><?php echo $key['jumlah'] ?></td>
                                               <td><?php echo $key['tanggal'] ?></td>
+                                              <?php foreach ($user as $tes) { ?>
+                                                <?php if($tes['level'] == 'admin') { ?>
                                               <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info">Edit</a>
                                               <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger">Delete</a></td>
+                                              <?php } } ?>
                                         </tr>
                                     <?php $no++; } ?>
                                     </tbody>

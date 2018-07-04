@@ -29,7 +29,8 @@ class ListTransaksi extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('list_transaksi');
-		$data["transaksi"] = $this->list_transaksi->getTampil();
+		$data['transaksi'] = $this->list_transaksi->getTampil();
+		$data['user'] = $this->list_transaksi->getUser();
 		$this->load->view('transaksi',$data);
 	}
 
@@ -41,8 +42,10 @@ class ListTransaksi extends CI_Controller {
 		$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
 		$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
 		
+		$data['user'] = $this->list_transaksi->getUser();
+
 		if($this->form_validation->run() == FALSE) {
-			$this->load->view('input_data_transaksi');
+			$this->load->view('input_data_transaksi', $data);
 		}else{
 			$this->list_transaksi->insertTransaksi();
 			echo "<script> alert('Data Transaksi Berhasil Ditambahkan'); window.location.href='';
