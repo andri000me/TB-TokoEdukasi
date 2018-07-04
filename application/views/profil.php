@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                       <a href="<?php echo base_url('index.php/listProfil/update')?>"class="btn btn-success">Update Profil</a></td>
+                                       <a href="listProfil/update/<?php echo $data['id_user'];  ?>"class="btn btn-success">Update Profil</a></td>
                                     </div>
                                 </div>
                                 <?php } ?>

@@ -26,26 +26,27 @@ class ListProfil extends CI_Controller {
 		$data['user'] = $this->list_profil->getUser();
 
 		if($this->form_validation->run() == FALSE) {
-			$this->load->view('edit_data_profil',$data);
+			$this->load->view('edit_data_profil', $data);
 		}else{
-			$config['upload_path']			='./assets/uploads/';
-			$config['allowed_types']		='gif|jpg|png';
-			$config['max_size']				=1000000000;
-			$config['max_width']			=10240;
-			$config['max_height']			=7680;
-		$this->load->library('upload', $config);
+			$this->list_profil->updateById($id);
+			echo "<script> alert('Profil Anda Berhasil Diubah'); window.location.href=''; </script>";
+			// $config['upload_path']			='./assets/uploads/';
+			// $config['allowed_types']		='gif|jpg|png';
+			// $config['max_size']				=1000000000;
+			// $config['max_width']			=10240;
+			// $config['max_height']			=7680;
+		
+			// $this->load->library('upload', $config);
 
-			if( ! $this->upload->do_upload('userfile'))
-			{
-				$error = array('error' => $this->upload->display_errors());
-				$this->load->view('edit_data_profil',$error);
-			}
-			else
-			{
-				$this->list_profil->updateById($id);
-				echo "<script> alert('Profil Anda Berhasil Diubah'); window.location.href='';
-			</script>";
-			}
+			// if( ! $this->upload->do_upload('userfile'))
+			// {
+			// 	$error = array('error' => $this->upload->display_errors());
+			// 	$this->load->view('edit_data_profil',$error);
+			// }
+			// else
+			// {
+
+			//}
 		}
 	}
 

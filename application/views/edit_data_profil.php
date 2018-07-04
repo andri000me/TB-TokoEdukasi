@@ -21,7 +21,7 @@
     <!-- ============================================================== -->
     <!-- Wrapper -->
     <!-- ============================================================== -->
-    <div id="wrapper">
+     <div id="wrapper">
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
@@ -36,10 +36,7 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
                 </ul>
             </div>
         </nav>
@@ -53,7 +50,7 @@
                         <a href='<?php echo base_url("index.php/admin/"); ?>' class="waves-effect"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href='<?php echo base_url("index.php/admin/user/"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
+                        <a href='<?php echo base_url("index.php/ListProfil"); ?>' class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profil</a>
                     </li>
                     <li>
                         <a href='<?php echo base_url("index.php/listProduk"); ?>' class="waves-effect"><i class="fa fa-check-square fa-fw" aria-hidden="true"></i>Produk</a>
@@ -98,31 +95,30 @@
                             <h3 class="box-title">Tabel Edit Data User</h3>
                             <div class="table-responsive">
                                 <table class="table">
-        <?php echo form_open('listProfil/update'.$this->uri->segment(3)); ?> 
-        
-        <?php echo validation_errors(); ?>
-        <div class="form-group">
-            <label for="">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?php echo $login[0]->username ?>"><br>
-            <label for="">Nama Lengkap</label>
-            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?php echo $login[0]->nama_lengkap ?>"><br>
-            <label for="">Email</label>
-            <input type="email" class="form-control" id="date" name="email" placeholder="Email" value="<?php echo $login[0]->email ?>"><br>
-            <label for="">Alamat</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="<?php echo $login[0]->alamat ?>"><br>
-            <label for="">No Telp</label>
-            <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No Telp" value="<?php echo $login[0]->no_telp ?>">
-        </div>
-            <label for="">Gambar</label>
-            <input type="file" name="userfile" size="20"/>
-        </div>
-        <center>
-                <button type="submit" class="btn btn-info">Submit</button>
-                 <a href="<?php echo base_url('index.php/listProfil')?>"class="btn btn-danger">Back</a></td>
-        </center>
-        <?php echo form_close(); ?>
-</table>
-</div>
+                                <?php echo form_open('listProfil/update/'.$this->uri->segment(3)); ?> 
+                                
+                                <?php echo validation_errors(); ?>
+                                <div class="form-group">
+                                    <label for="">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?php echo $login[0]->username ?>"><br>
+                                    <label for="">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" value="<?php echo $login[0]->nama_lengkap ?>"><br>
+                                    <label for="">Email</label>
+                                    <input type="email" class="form-control" id="date" name="email" placeholder="Email" value="<?php echo $login[0]->email ?>"><br>
+                                    <label for="">Alamat</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="<?php echo $login[0]->alamat ?>"><br>
+                                    <label for="">No Telp</label>
+                                    <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No Telp" value="<?php echo $login[0]->no_telp ?>"><br>
+                                    <label for="">Gambar</label>
+                                    <input type="file" name="userfile" size="20"/>
+                                </div>
+                                <center>
+                                        <button type="submit" class="btn btn-info">Submit</button>
+                                         <a href="<?php echo base_url('index.php/listProfil')?>"class="btn btn-danger">Back</a></td>
+                                </center>
+                                <?php echo form_close(); ?>
+                        </table>
+                        </div>
         
                 <!-- /.row -->
             </div></div>
