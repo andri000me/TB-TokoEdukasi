@@ -32,6 +32,14 @@ class ListUser extends CI_Controller {
 		$data["login"] = $this->list_user->getTampil();
 		$this->load->view('tampil_user',$data);
 	}
+	public function report()
+	{
+		$this->load->model('list_user');
+		$data["login"] = $this->list_user->getTampil();
+		//$this->load->view('print_user', $data);
+		$this->load->library('pdf');
+		$this->pdf->load_view('print_user', $data);
+	}
 	public function create()// sudah di isi di autoloard 
 	{
 		$this->load->model('list_user');

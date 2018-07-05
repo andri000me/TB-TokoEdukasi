@@ -37,7 +37,7 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</h4></a>
                 </ul>
             </div>
         </nav>
@@ -97,7 +97,9 @@
                                 <table class="table" id="example">
                                     <?php foreach ($user as $key) { ?>
                                         <?php if($key['level'] == 'admin') { ?>
-                                    <a href="<?php echo base_url('index.php/listProduk/create/')?>" class="btn btn-success">Tambah Produk</a><br><br> 
+                                    <a href="<?php echo base_url('index.php/listProduk/create/')?>" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah Produk</a>
+                                    <a href="<?php echo base_url('index.php/listProduk/report/')?>" class="btn btn-primary" style="float:right"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Print Produk</a>
+                                    <br><br> 
                                     <?php } } ?>
                                     <thead>
                                         <tr>
@@ -127,8 +129,8 @@
                                           <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200></td>
                                           <?php foreach ($user as $tes) { ?>
                                                 <?php if($tes['level'] == 'admin') { ?>
-                                          <td><a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>"                class="btn btn-info">Edit</a>
-                                          <a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>"                class="btn btn-danger">Delete</a></center>
+                                          <td><a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
+                                          <a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a></center>
                                             <?php } } ?>
                                       </tr> 
                                     </tbody>
@@ -154,8 +156,6 @@
     <script src="<?php echo base_url() ?>assets/js/sidebar-nav.min.js"></script>
     <!--slimscroll JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="<?php echo base_url() ?>assets/js/waves.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/custom.min.js"></script>
 

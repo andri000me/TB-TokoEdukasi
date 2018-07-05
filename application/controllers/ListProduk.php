@@ -23,14 +23,24 @@ class ListProduk extends CI_Controller {
 		else{
 			redirect('logout/out','refresh');
 		}
-}
+	}
 	public function index()
 	{
 		$this->load->model('list_produk');
 		$data["produk"] = $this->list_produk->getTampil();
 		$data['user'] = $this->list_produk->getUser();
-		$this->load->view('produk',$data);
+		$this->load->view('produk', $data);
 	}
+
+	public function report()
+	{
+		$this->load->model('list_produk');
+		$data["produk"] = $this->list_produk->getTampil();
+		//$this->load->view('print_produk', $data);
+		$this->load->library('pdf');
+		$this->pdf->load_view('print_produk', $data);
+	}
+
 	public function create()// sudah di isi di autoloard 
 	{
 		$this->load->model('list_produk');
@@ -92,7 +102,7 @@ class ListProduk extends CI_Controller {
 		$this->load->model('list_produk');
 		$this->list_produk->delete($id);
 		redirect('listProduk','refresh');
-		
-
 	}
+
+
 }

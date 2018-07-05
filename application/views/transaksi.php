@@ -36,7 +36,7 @@
                 </div>
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white">Logout</h4></a>   
+                    <a href="<?php echo base_url('index.php/logout/out')?>" class="btn btn-danger" style="height: 60px;"><h4 style="color: white"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</h4></a>   
                 </ul>
             </div>
         </nav>
@@ -93,7 +93,7 @@
                         <div class="white-box">
                             <div class="table-responsive">
                                 <table class="table" id="example">
-                                    <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success">Tambah Transaksi</a><br><br>
+                                    <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah Transaksi</a><br><br>
                                     <thead>
                                         <tr>
                                            <th>No</td>
@@ -119,8 +119,8 @@
                                               <td><?php echo $key['tanggal'] ?></td>
                                               <?php foreach ($user as $tes) { ?>
                                                 <?php if($tes['level'] == 'admin') { ?>
-                                              <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info">Edit</a>
-                                              <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger">Delete</a></td>
+                                              <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
+                                              <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a></td>
                                               <?php } } ?>
                                         </tr>
                                     <?php $no++; } ?>
