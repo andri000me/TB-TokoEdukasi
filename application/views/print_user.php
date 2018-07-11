@@ -38,25 +38,24 @@
                                            <td width="150px">Nama Lengkap</td>
                                            <td width="150px">Email</td>
                                            <td width="200px">Alamat</td>
-                                           <td width="150px">No Telp</td>
+                                           <td width="200px">No Telp</td>
                                         </tr>
                                      </thead>
                                      <tbody>
-                                        <tr>
-                                            <?php $no=1; ?>
-                                            <?php foreach ($login as $key) {
-                                                if ($key['level'] == 'user') {
-                                                ?>
+                                        <?php $no=1; ?>
+                                        <?php foreach ($login as $key) {
+                                        if ($key['level'] == 'user') {
+                                        ?>
+                                            <tr>
                                                 <td><?php echo $no ?></td>
                                                 <td><?php echo $key['username'] ?></td>
                                                 <td><?php echo $key['nama_lengkap'] ?></td>
                                                 <td><?php echo $key['email'] ?></td>
                                                 <td><?php echo $key['alamat'] ?></td>
-                                                <td><?php echo $key['no_telp'] ?></td>
-                                                <?php $no++ ?>
-                                                <?php } } ?>
-
+                                                <td><?php echo $key['no_telp'] ?></td>         
                                             </tr>
+                                        <?php $no++ ?>
+                                        <?php } } ?>
                                         </tbody>  
                                    </table>
                             </div>

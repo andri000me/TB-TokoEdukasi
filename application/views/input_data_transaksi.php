@@ -102,17 +102,24 @@
 
                                 <div class="form-group">
 
-                                    <label for="">ID User</label>
-                                    <input type="text" class="form-control id="id_user" name="id_user" placeholder="ID User"><br>
+                                    <!-- <label for="">ID User</label> -->
+                                    <input type="hidden" class="form-control" id="id_user" name="id_user" placeholder="ID User"><br>
 
-                                    <label for="">ID Produk</label>
-                                    <input type="text" class="form-control id="id_produk" name="id_produk" placeholder="ID produk"><br>
+                                    <!-- <label for="">ID Produk</label>
+                                    <input type="text" class="form-control" id="id_produk" name="id_produk" placeholder="ID produk"><br>-->
 
+                                    <label for="">Nama Produk</label>
+                                    <select name="id_produk" class="form-control">
+                                    <option value="none" selected="selected">------------------------------------------------------Pilih Produk------------------------------------------------------</option>
+                                    <?php foreach($produks as $produk):?>
+                                    <option class="form-control" value="<?php echo $produk->id_produk; ?>"><?php echo $produk->nama_produk?></option>
+                                    <?php endforeach;?>
+                                    </select>
+                                    <br><br>
                                     <label for="">Jumlah</label>
-                                    <input type="text" class="form-control id="jumlah" name="jumlah" placeholder="jumlah"></br>
-
+                                    <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah"></br>
                                     <label for="">Tanggal</label>
-                                    <input type="date" class="form-control id="tanggal" name="tanggal" placeholder="tanggal"></br>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal" value="<?php echo date('Y-m-d'); ?>"></br>
 
                                 </div>
                                 <center>

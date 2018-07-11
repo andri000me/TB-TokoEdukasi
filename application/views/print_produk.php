@@ -42,20 +42,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <?php $no=1; ?>
-                                               <?php foreach ($produk as $key) {
-                                            ?>                                        
+                                        <?php $no=1; ?>
+                                            <?php foreach ($produk as $key) { ?>
+                                        <tr>                                      
                                           <td><?php echo $no ?></td>
                                           <td><?php echo $key['nama_produk'] ?></td>
                                           <td><?php echo $key['harga'] ?></td>
                                           <td><?php echo $key['stok'] ?></td>
                                           <td><?php echo $key['deskripsi'] ?></td>
-                                          <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200></td>
+                                          <td>
+                                            <!--<img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200> -->
+                                            <?php echo $key['gambar'] ?>
+                                            </td>
                                         </tr> 
+                                        <?php $no++ ?>
+                                        <?php  } ?>
                                     </tbody>
-                                <?php $no++ ?>
-                                    <?php  } ?>
                                 </table>
                             </div>
                         </div>    

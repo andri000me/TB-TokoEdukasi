@@ -32,6 +32,7 @@ class Admin extends CI_Controller {
 		$data['jumlahuser'] = $this->Dashboardmod->getDataUser();
 		$data['jumlahproduk'] = $this->Dashboardmod->getDataProduk();
 		$data['jumlahtransaksi'] = $this->Dashboardmod->getDataTransaksi();
+		$data['jumlahtransaksiuser'] = $this->Dashboardmod->getDataTransaksiByUser();
 		$data['user'] = $this->Dashboardmod->getUser();
 		$this->load->view('index', $data);
 	}

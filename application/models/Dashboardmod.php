@@ -20,6 +20,12 @@ class Dashboardmod extends CI_Model {
 	    $query = $this->db->query("SELECT COUNT(id_transaksi) FROM transaksi");
 	    return $query->row();
 	}
+	public function getDataTransaksiByUser(){
+	    $session_data = $this->session->userdata('logged_in');
+		$id_user = $session_data['id_user'];
+	    $query = $this->db->query("SELECT COUNT(id_transaksi) FROM transaksi where id_user='$id_user'");
+	    return $query->row();
+	}
 	public function getUser()
 	{
 		$session_data = $this->session->userdata('logged_in');

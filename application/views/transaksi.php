@@ -95,35 +95,65 @@
                                 <table class="table" id="example">
                                     <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah Transaksi</a><br><br>
                                     <thead>
+                                        <?php foreach ($user as $key) { ?>
                                         <tr>
                                            <th>No</td>
-                                           <th>ID User</th>
-                                           <th>ID Produk</th>
+                                           <?php if($key['level'] == 'admin') { ?>
+                                                <th>ID User</th>
+                                            <?php } ?>
+                                            <?php if($key['level'] == 'user') { ?>
+                                                <th>Nama</th>
+                                            <?php } ?>
+                                           <th>Nama Produk</th>
                                            <th>Jumlah</th>
+                                           <th>Total Harga</th>
                                            <th>Tanggal</th>
-                                           <?php foreach ($user as $key) { ?>
-                                                <?php if($key['level'] == 'admin') { ?>
+
+                                            <?php if($key['level'] == 'admin') { ?>
                                                 <th>Options</th>
-                                            <?php } } ?>
+                                            <?php } ?>
+                                        <?php } ?>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <?php $no=1; ?>
-                                            <?php foreach ($transaksi as $key) {
-                                            ?>                                    
-                                              <td><?php echo $no ?></td>
-                                              <td><?php echo $key['id_user'] ?></td>
-                                              <td><?php echo $key['id_produk'] ?></td>
-                                              <td><?php echo $key['jumlah'] ?></td>
-                                              <td><?php echo $key['tanggal'] ?></td>
-                                              <?php foreach ($user as $tes) { ?>
-                                                <?php if($tes['level'] == 'admin') { ?>
-                                              <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
-                                              <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a></td>
-                                              <?php } } ?>
-                                        </tr>
-                                    <?php $no++; } ?>
+                                        <?php foreach ($user as $tes) { ?>
+                                            <?php if($tes['level'] == 'admin') { ?>
+                                                <?php $no=1; ?>
+                                                <?php foreach ($transaksi as $key) { ?>
+                                                <tr>
+                                                  <td><?php echo $no ?></td>
+                                                  <td><?php echo $key['id_user'] ?></td>
+                                                  <td><?php echo $key['id_produk'] ?></td>
+                                                  <td><?php echo $key['jumlah'] ?></td>
+                                                  <td><?php echo $key['total_harga'] ?></td>
+                                                  <td><?php echo $key['tanggal'] ?></td>       
+                                                  <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
+                                                  <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a></td>
+                                                 
+                                               </tr>
+                                            <?php $no++; } ?>
+                                        <?php } ?>
+                                        
+                                        <?php if($tes['level'] == 'user'){ ?>
+                                                <?php $no1=1; ?>
+                                                <?php foreach ($userbytransaksi as $value) { ?>
+                                                <tr>
+                                                  <td><?php echo $no1 ?></td>
+                                                  <!-- <td><?php echo $value['id_user'] ?></td> -->
+                                                    <?php foreach ($namabyuser as $nama) { ?>
+                                                        <td><?php echo $nama['username'] ?></td>
+                                                    <?php } ?>
+                                                    
+                                                    <td><?php echo $value['nama_produk'] ?></td>
+                                                    
+                                                  <!-- <td><?php echo $value['id_produk'] ?></td> -->
+                                                  <td><?php echo $value['jumlah'] ?></td>
+                                                  <td><?php echo $value['total_harga'] ?></td>
+                                                  <td><?php echo $value['tanggal'] ?></td>          
+                                                </tr>
+                                                <?php $no1++; }  ?>
+                                        <?php  } ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

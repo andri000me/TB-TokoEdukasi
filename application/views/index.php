@@ -81,9 +81,11 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <div class="row">
+                    <?php foreach ($user as $key) { ?>
+                        <?php if($key['level'] == 'admin') { ?>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total User</h3>
+                             <h3 class="box-title">Total User</h3>
                             <ul class="list-inline two-part">
                                 <li>
                                     <div id="sparklinedash"></div>
@@ -92,8 +94,10 @@
                                     <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success"><?php echo $user ?></span></li>
                                 <?php } ?>
                             </ul>
+   
                         </div>
                     </div>
+                    <?php } } ?>
                     <div class="col-lg-4 col-sm-6 col-xs-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Total Produk</h3>
@@ -114,9 +118,15 @@
                                 <li>
                                     <div id="sparklinedash3"></div>
                                 </li>
-                                <?php foreach ($jumlahtransaksi as $transaksi) { ?>
-                                    <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info"><?php echo $transaksi ?></span></li>
-                                <?php } ?>
+                                    <?php if($key['level'] == 'admin') { ?>
+                                        <?php foreach ($jumlahtransaksi as $transaksi) { ?>
+                                        <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info"><?php echo $transaksi ?></span></li>
+                                    <?php } } ?>
+                                    <?php if($key['level'] == 'user') { ?>
+                                        <?php foreach ($jumlahtransaksiuser as $transaksiuser) { ?>
+                                        <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info"><?php echo $transaksiuser ?></span></li>
+                                    <?php } } ?>
+
                             </ul>
                         </div>
                     </div>

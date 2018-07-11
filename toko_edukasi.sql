@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2018 at 07:19 AM
+-- Generation Time: Jul 11, 2018 at 04:54 AM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -36,17 +36,21 @@ CREATE TABLE `login` (
   `nama_lengkap` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `alamat` varchar(50) NOT NULL,
-  `no_telp` varchar(20) NOT NULL
+  `no_telp` varchar(20) NOT NULL,
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id_user`, `username`, `password`, `level`, `nama_lengkap`, `email`, `alamat`, `no_telp`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', 'admin@gmail.com', 'Jalan raya Sekarpuro', '085742123133'),
-(3, 'tes2', '28b662d883b6d76fd96e4ddc5e9ba780', 'user', 'tes23', 'tes234@gmail.com', 'tes2345', '123456789'),
-(4, 'coba', 'c3ec0f7b054e729c5a716c8125839829', 'user', 'coba', 'coba@gmail.com', 'coba', '123456');
+INSERT INTO `login` (`id_user`, `username`, `password`, `level`, `nama_lengkap`, `email`, `alamat`, `no_telp`, `foto`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'admin@gmail.com', 'alamat admin', '12345', ''),
+(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', 'user', 'user@gmail.com', 'alamat user', '0823112345', ''),
+(3, 'user2', '7e58d63b60197ceb55a1c487989a3720', 'user', 'user2', 'user2@gmail.com', 'alamat user2', '08573278281', ''),
+(4, 'user3', '92877af70a45fd6a2ed7fe81e1236b78', 'user', 'user3', 'user3@gmail.com', 'alamat user3', '08257923912', ''),
+(5, 'user4', '3f02ebe3d7929b091e3d8ccfde2f3bc6', 'user', 'user4', 'user4@gmail.com', 'alamat user4', '0321342595', ''),
+(6, 'user5', '0a791842f52a0acfbb3a783378c066b8', 'user', 'user5', 'user5@gmail.com', 'alamat user5', '0812182549', '');
 
 -- --------------------------------------------------------
 
@@ -72,8 +76,8 @@ CREATE TABLE `pembayaran` (
 CREATE TABLE `produk` (
   `id_produk` int(8) NOT NULL,
   `nama_produk` varchar(50) NOT NULL,
-  `harga` int(11) NOT NULL,
-  `stok` int(11) NOT NULL,
+  `harga` int(200) NOT NULL,
+  `stok` int(200) NOT NULL,
   `deskripsi` varchar(80) NOT NULL,
   `gambar` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -83,8 +87,11 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga`, `stok`, `deskripsi`, `gambar`) VALUES
-(1, 'sad', 2000, 5, 'sad', 'a.jpg'),
-(2, 'asd', 20001, 5, 'asd', 'b.jpg');
+(1, 'Topi Sekolah SD', 15000, 5, 'Murah', 'c1.jpg'),
+(2, 'Topi Sekolah SMP', 20000, 7, 'Nyaman, dan Aman', 'Topi_SMP.png'),
+(3, 'Topi Sekolah SMA', 25000, 10, 'Khusus SMA', 'topi_sma.png'),
+(4, 'Dasi SD', 10000, 7, 'Dasi standard', 'dasi_SD.jpg'),
+(5, 'Dasi SMA', 12500, 10, 'Khusus SMA', 'dasi_SMA.jpg');
 
 -- --------------------------------------------------------
 
@@ -96,7 +103,8 @@ CREATE TABLE `transaksi` (
   `id_transaksi` int(8) NOT NULL,
   `id_user` int(8) NOT NULL,
   `id_produk` int(8) NOT NULL,
-  `jumlah` int(11) NOT NULL,
+  `jumlah` int(200) NOT NULL,
+  `total_harga` int(15) NOT NULL,
   `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -104,8 +112,20 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_produk`, `jumlah`, `tanggal`) VALUES
-(1, 3, 2, 3, '2018-06-28');
+INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_produk`, `jumlah`, `total_harga`, `tanggal`) VALUES
+(1, 2, 1, 2, 30000, '2018-07-11'),
+(2, 2, 1, 18, 270000, '2018-07-11'),
+(3, 2, 5, 100, 1250000, '2018-07-11'),
+(4, 2, 1, 16, 240000, '2018-07-11'),
+(5, 2, 1, 5, 75000, '2018-07-11'),
+(6, 2, 1, 5, 75000, '2018-07-11'),
+(7, 2, 1, 6, 90000, '2018-07-11'),
+(8, 2, 1, 6, 90000, '2018-07-11'),
+(9, 2, 1, 100, 1500000, '2018-07-11'),
+(10, 2, 1, 100, 1500000, '2018-07-11'),
+(11, 2, 1, 10, 150000, '2018-07-11'),
+(12, 2, 1, 5, 75000, '2018-07-11'),
+(13, 2, 1, 6, 90000, '2018-07-11');
 
 --
 -- Indexes for dumped tables
@@ -150,7 +170,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
@@ -160,12 +180,12 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_produk` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_transaksi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --

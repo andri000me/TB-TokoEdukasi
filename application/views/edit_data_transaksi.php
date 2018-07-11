@@ -98,12 +98,7 @@
                     
 
                         <div class="form-group">
-                            <label for="">ID User</label>
-                            <input type="text" class="form-control" id="id_user" placeholder="ID User" name="id_user" value="<?php echo $transaksi[0]->id_user ?>">
-                            <br>
-                            <label for="">ID Produk</label>
-                            <input type="text" class="form-control" id="id_produk" name="id_produk" placeholder="ID Produk" value="<?php echo $transaksi[0]->id_produk ?>">
-                            <br>
+                            
                             <label for="">Jumlah</label>
                             <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah" value="<?php echo $transaksi[0]->jumlah ?>">
                             <br>

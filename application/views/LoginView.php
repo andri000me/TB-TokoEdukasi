@@ -64,13 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php echo form_close(); ?>
 			 		</div>
 				</form>
+				 <center><span class="glyphicon glyphicon-user" size="20px"></span>
+				 	jika Anda  Belum Mempunyai Akun 
+				 	<br><a href="<?php echo base_url('index.php/daftar/')?>">silahkan daftar disini!</a></li></a></br>
+				</center>
 			</div>
-			<?php 
-			 ?>
-			 <center><span class="glyphicon glyphicon-user" size="20px"></span>
-			 	jika Anda  Belum Mempunyai Akun 
-			 	<br><a href="<?php echo base_url('index.php/daftar/')?>">silahkan daftar disini!</a></li></a></br>
-			</center>
+
 		</div>
 	</div>
 
