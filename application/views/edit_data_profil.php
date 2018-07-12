@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +98,7 @@
                             <h3 class="box-title">Tabel Edit Data User</h3>
                             <div class="table-responsive">
                                 <table class="table">
-                                <?php echo form_open('listProfil/update/'.$this->uri->segment(3)); ?> 
+                                <?php echo form_open_multipart('listProfil/update/'.$this->uri->segment(3)); ?> 
                                 
                                 <?php echo validation_errors(); ?>
                                 <div class="form-group">
@@ -110,7 +113,8 @@
                                     <label for="">No Telp</label>
                                     <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No Telp" value="<?php echo $login[0]->no_telp ?>"><br>
                                     <label for="">Gambar</label>
-                                    <input type="file" name="userfile" size="20"/>
+                                    <img src="<?php echo base_url('assets/uploads/'.$login[0]->foto) ?>" width=200; height=200>
+                                    <input type="file" name="foto" size="20"/>
                                 </div>
                                 <center>
                                         <button type="submit" class="btn btn-info">Submit</button>

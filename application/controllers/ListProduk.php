@@ -91,11 +91,34 @@ class ListProduk extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('edit_data_produk',$data);
 		}else{
+			$config['upload_path']			='./assets/uploads/';
+			$config['allowed_types']		='gif|jpg|png';
+			$config['max_size']				=1000000000;
+			$config['max_width']			=10240;
+			$config['max_height']			=7680;
+		
+			$this->load->library('upload', $config);
+
+			if( ! $this->upload->do_upload('gambar'))
+			{
 			$this->list_produk->updateById($id);
-			echo "<script> alert('Data Produk Berhasil Diupdate'); window.location.href='';
-			</script>";
+			echo "<script> alert('Produk Anda Berhasil Diubah, WITHOUT GAMBAR'); window.location.href='../../ListProduk'; </script>";
+
+			$this->load->view('produk',$data);
+     		}
+     		else 
+     		{
+     		$this->list_produk->updateById($id);
+     		echo "<script> alert('Produk Anda Berhasil Diubah, WITH GAMBAR'); window.location.href='../../ListProduk'; </script>";
+
+			$this->load->view('produk',$data);
+
+			// $this->list_produk->updateById($id);
+			// echo "<script> alert('Data Produk Berhasil Diupdate'); window.location.href='';
+			// </script>";
 		}
 	}
+}
 	
 	public function delete($id)
 	{

@@ -92,7 +92,7 @@
                             <h3 class="box-title">Tabel Produk</h3>
                             <div class="table-responsive">
                                 <table class="table">
-                        <?php echo form_open('listProduk/update/'.$this->uri->segment(3)); ?> 
+                        <?php echo form_open_multipart('listProduk/update/'.$this->uri->segment(3)); ?> 
         
                         <?php echo validation_errors(); ?>
                     
@@ -107,7 +107,8 @@
                             <label for="">Deskripsi</label>
                             <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi"><?php echo $produk[0]->deskripsi ?></textarea>
                             <label for="">Gambar</label>
-                            <input type="text" class="form-control" id="gambar" name="gambar" placeholder="Gambar" value="<?php echo $produk[0]->gambar ?>">
+                            <img src="<?php echo base_url('assets/uploads/'.$produk[0]->gambar) ?>" width=200; height=200>
+                            <input type="file" name="gambar" size="20"/>
                         </div>
 
                         <div>

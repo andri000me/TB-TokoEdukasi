@@ -28,27 +28,34 @@ class ListProfil extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('edit_data_profil', $data);
 		}else{
-			$this->list_profil->updateById($id);
-			echo "<script> alert('Profil Anda Berhasil Diubah'); window.location.href=''; </script>";
-			// $config['upload_path']			='./assets/uploads/';
-			// $config['allowed_types']		='gif|jpg|png';
-			// $config['max_size']				=1000000000;
-			// $config['max_width']			=10240;
-			// $config['max_height']			=7680;
+			// $this->list_profil->updateById($id);
+			
+			$config['upload_path']			='./assets/uploads/';
+			$config['allowed_types']		='gif|jpg|png';
+			$config['max_size']				=1000000000;
+			$config['max_width']			=10240;
+			$config['max_height']			=7680;
 		
-			// $this->load->library('upload', $config);
+			$this->load->library('upload', $config);
 
-			// if( ! $this->upload->do_upload('userfile'))
-			// {
-			// 	$error = array('error' => $this->upload->display_errors());
-			// 	$this->load->view('edit_data_profil',$error);
-			// }
-			// else
-			// {
+			if( ! $this->upload->do_upload('foto'))
+			{
+			$this->list_profil->updateById($id);
+			echo "<script> alert('Profil Anda Berhasil Diubah, WITHOUT FOTO'); window.location.href='../../ListProfil'; </script>";
 
-			//}
-		}
-	}
+			$this->load->view('profil',$data);
+     		}
+     		else 
+     		{
+     		$this->list_profil->updateById($id);
+     		echo "<script> alert('Profil Anda Berhasil Diubah, WITH FOTO'); window.location.href='../../ListProfil'; </script>";
+
+			$this->load->view('profil',$data);
+     		}
+     	}
+     }
+
+
 
 	public function delete($id)
 	{

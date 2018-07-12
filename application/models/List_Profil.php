@@ -10,15 +10,28 @@ class List_Profil extends CI_Model {
 	}
 	public function updateById($id)
 	{	
+		if($this->upload->data('file_name')=="")
+		{
+			$object = array('username' => $this->input->post('username'), 
+							'nama_lengkap' => $this->input->post('nama_lengkap'),
+							'email' => $this->input->post('email'),
+							'alamat' => $this->input->post('alamat'),
+							'no_telp' => $this->input->post('no_telp'));
+			$this->db->where('id_user', $id);
+			$this->db->update('login', $object);
+		}else{
 		$object = array('username' => $this->input->post('username'), 
 						'nama_lengkap' => $this->input->post('nama_lengkap'),
 						'email' => $this->input->post('email'),
 						'alamat' => $this->input->post('alamat'),
-						'no_telp' => $this->input->post('no_telp'));
-
+						'email' => $this->input->post('email'),
+						'foto' => $this->upload->data('file_name'),
+						'no_telp' => $this->input->post('no_telp')
+					);
 		$this->db->where('id_user', $id);
-		$this->db->update('login', $object);
+		$this->db->update('login', $object);	
 	}
+}
 	public function getUser(){
 		$session_data = $this->session->userdata('logged_in');
 		$username = $session_data['username'];

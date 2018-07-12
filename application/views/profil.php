@@ -84,24 +84,28 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> 
-                                <!-- <img width="100%" alt="user" src=""> -->
-                                <div class="overlay-box">
+                            <div class="user-bg" > 
+                                <img width="100%" alt="user" src="">
+                                <div class="overlay-box" >
+                                    <?php foreach ($login as $data ) { ?>
+
+                                       <img src="<?php echo base_url('assets/uploads/'.$data['foto']) ?>" width=230; height=230>
+                                         <?php } ?>
                                     <div class="user-content">
                                         <a href="javascript:void(0)">
                                             <!-- <img src="" class="thumb-lg img-circle" alt="img"> -->
                                         </a>
-                                         <?php foreach ($login as $data ) { ?>
+<!--                                          <?php foreach ($login as $data ) { ?>
                                         <h4 class="text-white">Foto Profil</h4>
-                                        <h3><?php echo $data['foto']; ?></h3>
-                                         <?php } ?>
-                                        <h5 class="text-white"><?php echo $data['email']; ?></h5> </div>
+                                       <img src="<?php echo base_url('assets/uploads/'.$data['foto']) ?>" width=200; height=200>
+                                         <?php } ?> -->
+                                       <!--  <h5 class="text-white"><?php echo $data['email']; ?> --></h5> </div>
                                 </div>
                             </div>
                             <div class="user-btm-box">
                                 <div class="col-md-12 col-sm-12 text-center">
-                                    <p class="text-purple"><i class="ti-facebook"></i></p>
-                                    <h1>ID</h1> 
+                                    <!-- <p class="text-purple"><i class="ti-facebook"></i></p> -->
+                                    <h1>Foto Profil</h1> 
                                 </div>
                             </div>
                         </div>
@@ -110,7 +114,9 @@
                         <div class="white-box">
                             <form class="form-horizontal form-material">
                                 <?php foreach ($login as $data ) { ?>
-                                   
+                                 <?php echo form_open_multipart('listProfil/update'); ?> 
+                                <?php echo validation_errors(); ?>  
+        
                                 <div class="form-group">
                                     <label class="col-md-12">Nama Lengkap</label>
                                     <div class="col-md-12"> 
