@@ -3,7 +3,7 @@
 
 <head>   
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>assets/images/favicon.png">
-    <title>Dashboard admin - Transaksi</title>
+    <title>Dashboard admin - Pembayaran</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/style.css" rel="stylesheet">
@@ -78,12 +78,12 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Tabel Transaksi</h4> </div>
+                        <h4 class="page-title">Tabel Pembayaran</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         </a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Tabel Transaksi</li>
+                            <li class="active">Tabel Pembayaran</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -92,51 +92,44 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Tabel Transaksi</h3><br>
+                           
                             <div class="table-responsive">
                                 <table class="table">
                     
-                                <?php echo form_open_multipart('listTransaksi/create/'.$this->uri->segment(3)); ?> 
+                                <?php echo form_open_multipart('listTransaksi/payment/'.$this->uri->segment(3)); ?> 
         
                                 <?php echo validation_errors(); ?>
 
                                 <div class="form-group">
 
                                     <!-- <label for="">ID User</label> -->
-                                    <input type="hidden" class="form-control" id="id_user" name="id_user" placeholder="ID User">
-                                    
-                                    <?php foreach($produks as $produk):?>
-                                    <input type="hidden" class="form-control" id="id_produk" name="id_produk" placeholder="ID Produk" value="<?php echo $produk->id_produk?>">
-                                    <input type="hidden" class="form-control" id="stok" name="stok" placeholder="ID Produk" value="<?php echo $produk->stok?>">
-                                    <?php endforeach;?>
+                                    <input type="hidden" class="form-control" id="id_user" name="id_user"placeholder="ID User">
 
-                                    <!-- <label for="">ID Produk</label>
-                                    <input type="text" class="form-control" id="id_produk" name="id_produk" placeholder="ID produk"><br>-->
+<!--                                  
+                                   <label for="">ID Transaksi</label>
+                                    <input type="text" class="form-control" id="id_transaksi" name="id_transaksi" placeholder="ID transaksi"></br> -->
 
-                                    <!-- <label for="">Nama Produk</label>
-                                    <select name="id_produk" class="form-control">
-                                    <option value="none" selected="selected">------------------------------------------------------Pilih Produk------------------------------------------------------</option>
-                                    <?php foreach($produks as $produk):?>
-                                    <option class="form-control" value="<?php echo $produk->id_produk; ?>"><?php echo $produk->nama_produk?></option>
-                                    <?php endforeach;?>
-                                    </select>
-                                    <br><br> -->
-                                    <label for="">Jumlah</label>
-                                    <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="jumlah"></br>
-                                    <!-- <label for="">Tanggal</label> -->
-                                    <input type="hidden" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal" value="<?php echo date('Y-m-d'); ?>"></br>
+                                    <label for="">No Rekening (16 Digit)</label>
+                                    <input type="text" class="form-control" id="no_kartu" name="no_kartu" placeholder="No Rekening"></br>
+
+                                    <label for="">Nama Pengguna Pada Kartu</label>
+                                    <input type="text" class="form-control" id="nama_pengguna" name="nama_pengguna" placeholder="Nama Pengguna"></br>
+
+                                    <label for="">CVV (3 Digit Terakhir Kartu)</label>
+                                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="cvv"></br>
+
 
                                 </div>
                                 <center>
                                         <button type="submit" class="btn btn-info">Submit</button>
-                                        <a href="<?php echo base_url('index.php/listProduk')?>"class="btn btn-danger">Back</a></td>
+                                        <a href="<?php echo base_url('index.php/listTransaksi')?>"class="btn btn-danger">Back</a></td>
                                 </center>
                                 </table>
                             </div>
                             <?php echo form_close(); ?>
                 <!-- /.row -->
                         </div>
-                    </div>
+                        </div>
                         <footer class="footer text-center"> 2018 &copy; Admin Toko Edukasi Online </footer>
                     </div>
         <!-- /#page-wrapper -->

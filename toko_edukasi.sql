@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2018 at 04:54 AM
+-- Generation Time: Jul 17, 2018 at 05:24 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -46,7 +46,7 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`id_user`, `username`, `password`, `level`, `nama_lengkap`, `email`, `alamat`, `no_telp`, `foto`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'admin@gmail.com', 'alamat admin', '12345', ''),
-(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', 'user', 'user@gmail.com', 'alamat user', '0823112345', ''),
+(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', 'user', 'user@gmail.com', 'alamat user', '08231123451', 'a_2.png'),
 (3, 'user2', '7e58d63b60197ceb55a1c487989a3720', 'user', 'user2', 'user2@gmail.com', 'alamat user2', '08573278281', ''),
 (4, 'user3', '92877af70a45fd6a2ed7fe81e1236b78', 'user', 'user3', 'user3@gmail.com', 'alamat user3', '08257923912', ''),
 (5, 'user4', '3f02ebe3d7929b091e3d8ccfde2f3bc6', 'user', 'user4', 'user4@gmail.com', 'alamat user4', '0321342595', ''),
@@ -60,12 +60,23 @@ INSERT INTO `login` (`id_user`, `username`, `password`, `level`, `nama_lengkap`,
 
 CREATE TABLE `pembayaran` (
   `id_pembayaran` int(8) NOT NULL,
-  `id_transaksi` int(8) NOT NULL,
-  `no_kartu` int(20) NOT NULL,
-  `nama_pemilik` varchar(50) NOT NULL,
-  `masa_berlaku` date NOT NULL,
-  `cvv` int(8) NOT NULL
+  `fkTransaksi` int(8) NOT NULL,
+  `no_kartu` varchar(20) NOT NULL,
+  `nama_pengguna` varchar(50) NOT NULL,
+  `cvv` varchar(8) NOT NULL,
+  `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`id_pembayaran`, `fkTransaksi`, `no_kartu`, `nama_pengguna`, `cvv`, `status`) VALUES
+(1, 1, '2147483647', 'Rio', '50', 'dibayar'),
+(2, 5, '12301240405012', 'Citra Indana', '123', 'menunggu'),
+(4, 6, '12301240405023', 'gada', '023', 'menunggu'),
+(5, 2, '12301240405051', 'Sin', '051', 'menunggu'),
+(6, 7, '12301240405013', 'Gilang', '013', 'dibayar');
 
 -- --------------------------------------------------------
 
@@ -87,11 +98,11 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga`, `stok`, `deskripsi`, `gambar`) VALUES
-(1, 'Topi Sekolah SD', 15000, 5, 'Murah', 'c1.jpg'),
-(2, 'Topi Sekolah SMP', 20000, 7, 'Nyaman, dan Aman', 'Topi_SMP.png'),
-(3, 'Topi Sekolah SMA', 25000, 10, 'Khusus SMA', 'topi_sma.png'),
-(4, 'Dasi SD', 10000, 7, 'Dasi standard', 'dasi_SD.jpg'),
-(5, 'Dasi SMA', 12500, 10, 'Khusus SMA', 'dasi_SMA.jpg');
+(1, 'Topi Sekolah SD', 15000, 7, 'Murah', 'c1.jpg'),
+(2, 'Topi Sekolah SMP', 20000, 0, 'Nyaman, dan Aman', 'Topi_SMP.png'),
+(3, 'Topi Sekolah SMA', 25000, 5, 'Khusus SMA', 'topi_sma.png'),
+(4, 'Dasi SD', 10000, 5, 'Dasi standard', 'dasi_SD.jpg'),
+(5, 'Dasi SMA', 12500, 5, 'Khusus SMA', 'dasi_SMA.jpg');
 
 -- --------------------------------------------------------
 
@@ -113,19 +124,13 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_produk`, `jumlah`, `total_harga`, `tanggal`) VALUES
-(1, 2, 1, 2, 30000, '2018-07-11'),
-(2, 2, 1, 18, 270000, '2018-07-11'),
-(3, 2, 5, 100, 1250000, '2018-07-11'),
-(4, 2, 1, 16, 240000, '2018-07-11'),
-(5, 2, 1, 5, 75000, '2018-07-11'),
-(6, 2, 1, 5, 75000, '2018-07-11'),
-(7, 2, 1, 6, 90000, '2018-07-11'),
-(8, 2, 1, 6, 90000, '2018-07-11'),
-(9, 2, 1, 100, 1500000, '2018-07-11'),
-(10, 2, 1, 100, 1500000, '2018-07-11'),
-(11, 2, 1, 10, 150000, '2018-07-11'),
-(12, 2, 1, 5, 75000, '2018-07-11'),
-(13, 2, 1, 6, 90000, '2018-07-11');
+(1, 2, 1, 1, 15000, '2018-07-11'),
+(2, 2, 5, 2, 25000, '2018-07-11'),
+(3, 3, 1, 1, 15000, '2018-07-12'),
+(5, 2, 5, 1, 12500, '2018-07-16'),
+(6, 2, 3, 2, 50000, '2018-07-16'),
+(7, 3, 1, 1, 15000, '2018-07-16'),
+(8, 2, 3, 1, 25000, '2018-07-17');
 
 --
 -- Indexes for dumped tables
@@ -144,7 +149,7 @@ ALTER TABLE `login`
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`),
   ADD KEY `id_pembayaran` (`id_pembayaran`),
-  ADD KEY `id_transaksi` (`id_transaksi`);
+  ADD KEY `id_transaksi` (`fkTransaksi`);
 
 --
 -- Indexes for table `produk`
@@ -175,7 +180,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembayaran` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `produk`
 --
@@ -185,7 +190,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_transaksi` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
@@ -194,7 +199,7 @@ ALTER TABLE `transaksi`
 -- Constraints for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`);
+  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`fkTransaksi`) REFERENCES `transaksi` (`id_transaksi`);
 
 --
 -- Constraints for table `transaksi`

@@ -41,14 +41,14 @@ class ListProfil extends CI_Controller {
 			if( ! $this->upload->do_upload('foto'))
 			{
 			$this->list_profil->updateById($id);
-			echo "<script> alert('Profil Anda Berhasil Diubah, WITHOUT FOTO'); window.location.href='../../ListProfil'; </script>";
+			echo "<script> alert('Profil Anda Berhasil Diubah'); window.location.href='../../ListProfil'; </script>";
 
 			$this->load->view('profil',$data);
      		}
      		else 
      		{
      		$this->list_profil->updateById($id);
-     		echo "<script> alert('Profil Anda Berhasil Diubah, WITH FOTO'); window.location.href='../../ListProfil'; </script>";
+     		echo "<script> alert('Profil Anda Berhasil Diubah'); window.location.href='../../ListProfil'; </script>";
 
 			$this->load->view('profil',$data);
      		}

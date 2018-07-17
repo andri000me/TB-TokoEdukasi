@@ -34,30 +34,67 @@ class ListTransaksi extends CI_Controller {
 		$data['userbytransaksi'] = $this->list_transaksi->getUserbyTransaksi();
 		$data['namabyuser'] = $this->list_transaksi->getNamaByUser();
 		$data['barangbyid'] = $this->list_transaksi->getBarangById();
+		// $data['transaksipembayaran'] = $this->list_transaksi->transaksiByPembayaran();
 		$this->load->view('transaksi',$data);
 	}
 
-	public function create()// sudah di isi di autoloard 
+	public function create($id)// sudah di isi di autoloard 
 	{
 		$this->load->model('list_transaksi');
 		// $this->form_validation->set_rules('id_user', 'id_user', 'trim|required');
 		$this->form_validation->set_rules('id_produk', 'id_produk', 'trim|required');
 		//$this->form_validation->set_rules('produk', 'produk', 'required');
-		$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required|callback_cekStok');
+		$this->form_validation->set_rules('jumlah','jumlah','trim|required');
+		$this->form_validation->set_rules('stok','stok','trim|required|callback_cekStok');
 		// $this->form_validation->set_rules('total', 'total', 'trim|required');
 		$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
 		
 		$data['user'] = $this->list_transaksi->getUser();
-		$data['produks'] = $this->list_transaksi->getProduk();
+		$data['produks'] = $this->list_transaksi->getProduk($id);
 
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('input_data_transaksi', $data);
 		}else{
-			$this->list_transaksi->insertTransaksi();
-			echo "<script> alert('Data Transaksi Berhasil Ditambahkan'); window.location.href='';
+			$this->list_transaksi->insertTransaksi($id);
+			echo "<script> alert('Data Transaksi Berhasil Ditambahkan'); window.location.href='../../listTransaksi';
 			</script>";
 		}
 	}
+
+	public function payment($id)// sudah di isi di autoloard 
+	{
+		$this->load->model('list_transaksi');
+		// $this->form_validation->set_rules('id_transaksi', 'id_transaksi', 'trim|required');
+		$this->form_validation->set_rules('no_kartu','no_kartu','trim|required');
+		$this->form_validation->set_rules('nama_pengguna','nama_pengguna','trim|required');
+		$this->form_validation->set_rules('cvv', 'cvv', 'trim|required');
+		
+		$data['user'] = $this->list_transaksi->getUser();
+
+		if($this->form_validation->run() == FALSE) {
+			$this->load->view('input_data_pembayaran', $data);
+		}else{
+			$this->list_transaksi->insertPembayaran($id);
+			echo "<script> alert('Data Pembayaran Berhasil Ditambahkan'); window.location.href='../../listTransaksi';
+			</script>";
+		}
+	}
+	public function paymentdesc($id)// sudah di isi di autoloard 
+	{
+		$this->load->model('list_transaksi');
+		$this->form_validation->set_rules('id_user', 'id_user', 'trim');
+		
+		$data['pembayaran'] = $this->list_transaksi->getPembayaran($id);
+
+		if($this->form_validation->run() == FALSE) {
+			$this->load->view('view_data_pembayaran', $data);
+		}else{
+			$this->list_transaksi->updatePembayaran($id);
+			echo "<script> alert('Pembelian telah dikonfirmasi'); window.location.href='../../listTransaksi';
+			</script>";
+		}
+	}
+
 	public function update($id)
 	{
 	
@@ -69,7 +106,7 @@ class ListTransaksi extends CI_Controller {
 		$this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
 		
 		$data['transaksi'] = $this->list_transaksi->getTransaksi($id);
-		$data['produks'] = $this->list_transaksi->getProduk();
+		$data['produks'] = $this->list_transaksi->getProduk($id);
 
 		if($this->form_validation->run() == FALSE) {
 			$this->load->view('edit_data_transaksi',$data);
@@ -90,7 +127,7 @@ class ListTransaksi extends CI_Controller {
 	public function cekStok($stok)
 	{
 		$jumlah = $this->input->post('jumlah');
-		if (5 > $jumlah)
+		if ($stok < $jumlah)
 		{ 
 			$this->form_validation->set_message('cekStok',"Jumlah Produk tidak tersedia");
 			return false;

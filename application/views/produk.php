@@ -109,10 +109,7 @@
                                             <th>Stok</th>
                                             <th>Deskripsi</th>
                                             <th>Gambar</th>
-                                            <?php foreach ($user as $key) { ?>
-                                                <?php if($key['level'] == 'admin') { ?>
                                             <th>Options</th>
-                                            <?php } } ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -126,12 +123,17 @@
                                           <td><?php echo $key['harga'] ?></td>
                                           <td><?php echo $key['stok'] ?></td>
                                           <td><?php echo $key['deskripsi'] ?></td>
-                                          <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=200; height=200></td>
+                                          <td><img src="<?php echo base_url('assets/uploads/'.$key['gambar']) ?>" width=150; height=150></td>
+                                          <td>
                                           <?php foreach ($user as $tes) { ?>
                                                 <?php if($tes['level'] == 'admin') { ?>
-                                          <td><a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
-                                          <a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a></center>
+                                          <a href="<?php echo base_url('index.php/listProduk/update/'.$key['id_produk'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
+                                          <a href="<?php echo base_url('index.php/listProduk/delete/'.$key['id_produk'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a>
                                             <?php } } ?>
+                                            <?php if($key['stok'] != 0) { ?>
+                                          <a href="<?php echo base_url('index.php/listTransaksi/create/'.$key['id_produk'])?>" class="btn btn-warning"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Beli</a>
+                                            <?php } ?>
+                                          </td>
                                       </tr> 
                                     </tbody>
                                 <?php $no++ ?>

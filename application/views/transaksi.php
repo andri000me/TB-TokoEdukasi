@@ -91,28 +91,19 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
+                             <h3 class="box-title">No Rekening Toko Edukasi Online : <b>8474774323239003</b></h3>
                             <div class="table-responsive">
                                 <table class="table" id="example">
-                                    <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah Transaksi</a><br><br>
+                                    <!-- <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah Transaksi</a><br><br> -->
                                     <thead>
-                                        <?php foreach ($user as $key) { ?>
                                         <tr>
                                            <th>No</td>
-                                           <?php if($key['level'] == 'admin') { ?>
-                                                <th>ID User</th>
-                                            <?php } ?>
-                                            <?php if($key['level'] == 'user') { ?>
-                                                <th>Nama</th>
-                                            <?php } ?>
+                                           <th>Username</th>
                                            <th>Nama Produk</th>
                                            <th>Jumlah</th>
                                            <th>Total Harga</th>
                                            <th>Tanggal</th>
-
-                                            <?php if($key['level'] == 'admin') { ?>
-                                                <th>Options</th>
-                                            <?php } ?>
-                                        <?php } ?>
+                                           <th>Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,12 +113,20 @@
                                                 <?php foreach ($transaksi as $key) { ?>
                                                 <tr>
                                                   <td><?php echo $no ?></td>
-                                                  <td><?php echo $key['id_user'] ?></td>
-                                                  <td><?php echo $key['id_produk'] ?></td>
+                                                  <td><?php echo $key['username'] ?></td>
+                                                  <td><?php echo $key['nama_produk'] ?></td>
                                                   <td><?php echo $key['jumlah'] ?></td>
                                                   <td><?php echo $key['total_harga'] ?></td>
                                                   <td><?php echo $key['tanggal'] ?></td>       
-                                                  <td><a href="<?php echo base_url('index.php/listTransaksi/update/'.$key['id_transaksi'])?>" class="btn btn-info"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Edit</a>
+                                                  <td>
+                                                     <?php if (!empty($key['fkTransaksi'])) { ?>
+                                                        <?php if($key['status'] != 'dibayar') { ?> 
+                                                            <a href="<?php echo base_url('index.php/listTransaksi/paymentdesc/'.$key['id_transaksi'])?>" class="btn btn-info"><i class="fa fa-credit-card fa-fw" aria-hidden="true"></i>Pembayaran</a>
+                                                        <?php } ?>
+                                                  <?php } ?>
+                                                  <?php if($key['status'] == 'dibayar') { ?>
+                                                  <label class="label label-success">Barang telah dibayar</label>      
+                                                  <?php } ?>
                                                   <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$key['id_transaksi'])?>" class="btn btn-danger"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>Delete</a></td>
                                                  
                                                </tr>
@@ -143,19 +142,30 @@
                                                     <?php foreach ($namabyuser as $nama) { ?>
                                                         <td><?php echo $nama['username'] ?></td>
                                                     <?php } ?>
-                                                    
                                                     <td><?php echo $value['nama_produk'] ?></td>
-                                                    
                                                   <!-- <td><?php echo $value['id_produk'] ?></td> -->
                                                   <td><?php echo $value['jumlah'] ?></td>
                                                   <td><?php echo $value['total_harga'] ?></td>
-                                                  <td><?php echo $value['tanggal'] ?></td>          
+                                                  <td><?php echo $value['tanggal'] ?></td>
+                                                  <td>
+                                                    <?php if (empty($value['fkTransaksi'])) { ?>
+                                                        <a href="<?php echo base_url('index.php/listTransaksi/payment/'.$value['id_transaksi'])?>" class="btn btn-info"><i class="fa fa-credit-card fa-fw" aria-hidden="true"></i>Pembayaran</a>
+                                                        <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$value['id_transaksi'])?>" class="btn btn-danger"><i class="fa fa-times fa-fw" aria-hidden="true"></i>Cancel</a>
+                                                    <?php }  ?>
+                                                  <?php if($value['status'] == 'menunggu') { ?> 
+                                                    <label class="label label-warning"> Sedang Menunggu Pembayaran </label>
+                                                  <?php } ?>
+                                                  <?php if($value['status'] == 'dibayar') { ?> 
+                                                    <label class="label label-success"> Barang Telah Dikirim </label>
+                                                  <?php } ?>
+                                                  </td>       
                                                 </tr>
                                                 <?php $no1++; }  ?>
-                                        <?php  } ?>
+                                            <?php } ?>
                                         <?php } ?>
                                     </tbody>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>

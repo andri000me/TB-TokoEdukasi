@@ -3,19 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class List_Transaksi extends CI_Model {
 
-	public function getTampil()
-	{
-		$query = $this->db->query("Select * from transaksi");
-		return $query->result_array();
-	}
-	public function insertTransaksi()
+	
+	public function insertTransaksi($id)
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$id_user = $session_data['id_user'];
-		$id_produk = $this->input->post('id_produk');
+		$id = $this->input->post('id_produk');
 		$jumlah = $this->input->post('jumlah');
 
-		$this->db->where('id_produk',$id_produk);
+		$this->db->where('id_produk',$id);
 		$query1 = $this->db->get('produk');
 		$query_result = $query1->result_array();
 
@@ -29,7 +25,7 @@ class List_Transaksi extends CI_Model {
 
 		$object = array(
 			'id_user' => $id_user, 
-			'id_produk' => $id_produk,
+			'id_produk' => $id,
 			'jumlah' => $jumlah,
 			'total_harga' => $harga_baru,
 			'tanggal' => $this->input->post('tanggal')
@@ -41,7 +37,7 @@ class List_Transaksi extends CI_Model {
 			'stok' => $stok_baru
 		);
 
-		$this->db->where('id_produk', $id_produk);
+		$this->db->where('id_produk', $id);
 		$this->db->update('produk', $object2);
 
 		// $query = $this->db->query("SELECT * from transaksi as t inner join produk as p on t.id_produk = p.id_produk where t.id_user='$id_user'");
@@ -74,11 +70,20 @@ class List_Transaksi extends CI_Model {
 		// var_dump($query);die();
 		return $query->result_array();
 	}
-	public function getProduk(){
-		$query = $this->db->get('produk');
-		$query_result = $query->result();
-		return $query_result;
+	public function getProduk($id)
+	{
+		$this->db->where('id_produk', $id);
+		$query= $this->db->get('produk');
+		return $query->result();
 	}
+
+	public function getPembayaran($id)
+	{
+		$this->db->where('fkTransaksi', $id);
+		$query= $this->db->get('pembayaran');
+		return $query->result();
+	}
+
 	public function getNamaByUser()
 	{
 		$session_data = $this->session->userdata('logged_in');
@@ -98,7 +103,13 @@ class List_Transaksi extends CI_Model {
 	{
 		$session_data = $this->session->userdata('logged_in');
 		$username = $session_data['username'];
-		$query = $this->db->query("SELECT * from produk as p inner join transaksi as t on p.id_produk = t.id_produk inner join login as l on t.id_user = l.id_user where l.username='$username'");
+
+		$query = $this->db->query("SELECT l.username,p.nama_produk,t.jumlah,t.total_harga,t.tanggal,pe.fkTransaksi,t.id_transaksi,pe.status from produk as p inner join transaksi as t on p.id_produk = t.id_produk inner join login as l on t.id_user = l.id_user left join pembayaran as pe on t.id_transaksi = pe.fkTransaksi where l.username='$username'");
+		return $query->result_array();
+	}
+	public function getTampil()
+	{
+		$query = $this->db->query("SELECT l.username,p.nama_produk,t.jumlah,t.total_harga,t.tanggal,pe.fkTransaksi,t.id_transaksi,pe.status from produk as p inner join transaksi as t on p.id_produk = t.id_produk inner join login as l on t.id_user = l.id_user left join pembayaran as pe on t.id_transaksi = pe.fkTransaksi");
 		return $query->result_array();
 	}
 	public function updateByIdTransaksi($id)
@@ -118,6 +129,32 @@ class List_Transaksi extends CI_Model {
 		$this->db->delete('transaksi');
 	}
 	
+	public function insertPembayaran($id)
+	{
+
+		$object = array(
+			'fkTransaksi' => $id,
+			'no_kartu' => $this->input->post('no_kartu'),
+			'nama_pengguna' => $this->input->post('nama_pengguna'),
+			'cvv' => $this->input->post('cvv'),
+			'status' => 'menunggu',
+		);
+					
+		$this->db->insert('pembayaran', $object);
+	}
+	public function updatePembayaran($id)
+	{
+		$object = array(
+			'status' => 'dibayar'
+		);
+		$this->db->where('fkTransaksi', $id);
+		$this->db->update('pembayaran', $object);
+	}
+	// public function transaksiByPembayaran()
+	// {
+	// 	$query = $this->db->query("SELECT * from transaksi as t left join pembayaran as p on t.id_transaksi = p.id_transaksi;");
+	// 	return $query->result_array();
+	// }
 	public function stok()
 	{
 		$session_data = $this->session->userdata('logged_in');
