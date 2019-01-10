@@ -21,7 +21,8 @@ class Create extends CI_Model {
 						'nama_lengkap' => $this->input->post('nama_lengkap'),
 						'email' => $this->input->post('email'),
 						'alamat' => $this->input->post('alamat'),
-						'no_telp' => $this->input->post('no_telp')
+						'no_telp' => $this->input->post('no_telp'),
+						'foto' => 'aku.png'
 					);
 		$this->db->insert('login', $object);
 	}

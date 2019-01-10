@@ -2,7 +2,7 @@
 // define('BASEPATH') OR exit ('No direct script access allowed');
 class ListProduk extends CI_Controller {
 	public function __construct()
-
+	
 	{
 		parent::__construct();
 		if($this->session->userdata('logged_in')){
@@ -102,14 +102,14 @@ class ListProduk extends CI_Controller {
 			if( ! $this->upload->do_upload('gambar'))
 			{
 			$this->list_produk->updateById($id);
-			echo "<script> alert('Produk Anda Berhasil Diubah, WITHOUT GAMBAR'); window.location.href='../../ListProduk'; </script>";
+			echo "<script> alert('Produk Anda Berhasil Diubah'); window.location.href='../../ListProduk'; </script>";
 
 			$this->load->view('produk',$data);
      		}
      		else 
      		{
      		$this->list_produk->updateById($id);
-     		echo "<script> alert('Produk Anda Berhasil Diubah, WITH GAMBAR'); window.location.href='../../ListProduk'; </script>";
+     		echo "<script> alert('Produk Anda Berhasil Diubah'); window.location.href='../../ListProduk'; </script>";
 
 			$this->load->view('produk',$data);
 

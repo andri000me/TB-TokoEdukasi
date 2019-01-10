@@ -33,8 +33,7 @@ class Daftar extends CI_Controller {
 			$this->load->view('daftar');
 		}else{
 			$this->create->tambah();
-			echo "<script> alert('Selamat Registrasi anda telah berhasil'); window.location.href='';
-			</script>";
+			redirect('admin','refresh');
 		}
 	}
 	public function cekPassword($konfirmasi)

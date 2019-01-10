@@ -93,7 +93,9 @@
                             <div class="table-responsive">
                                 <table class="table" id="example">
                                 <a href="<?php echo base_url('index.php/listUser/create/')?>"class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah User</a>
+
                                 <a href="<?php echo base_url('index.php/listUser/report/')?>" class="btn btn-primary" style="float:right"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Print User</a>
+                                
                                 <br><br>
  
                                  <thead>

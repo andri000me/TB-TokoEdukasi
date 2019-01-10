@@ -91,7 +91,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                             <h3 class="box-title">No Rekening Toko Edukasi Online : <b>8474774323239003</b></h3>
+                             <h3 class="box-title">No Rekening Toko Edukasi Online : <b>
+                          </b></h3>
+                          <h1 style="color:red">8474774323239003</h1>
                             <div class="table-responsive">
                                 <table class="table" id="example">
                                     <!-- <a href="<?php echo base_url('index.php/listTransaksi/create/')?>" class="btn btn-success"><i class="fa fa-plus fa-fw" aria-hidden="true"></i>Tambah Transaksi</a><br><br> -->
@@ -153,7 +155,7 @@
                                                         <a href="<?php echo base_url('index.php/listTransaksi/delete/'.$value['id_transaksi'])?>" class="btn btn-danger"><i class="fa fa-times fa-fw" aria-hidden="true"></i>Cancel</a>
                                                     <?php }  ?>
                                                   <?php if($value['status'] == 'menunggu') { ?> 
-                                                    <label class="label label-warning"> Sedang Menunggu Pembayaran </label>
+                                                    <label class="label label-warning"> Sedang Menunggu Konfirmasi </label>
                                                   <?php } ?>
                                                   <?php if($value['status'] == 'dibayar') { ?> 
                                                     <label class="label label-success"> Barang Telah Dikirim </label>
